@@ -1,0 +1,68 @@
+What I'm talking about when I say 'Build' - tools, team dev processes (but not agile/task management processes), techniques etc
+Why good build processes are important
+Overall, the way to do this well is to focus on usability
+Developer tools are a product that your team builds for itself
+You want your team to deploy often/develop quickly/build things everybody is sure work. How do you create a product (your build process) that encourages all of you to do so?
+Developer pain is user feedback; iterate, improve, think about what the tools make easy and make hard, and the practices they lead you towards
+Four areas of poor behaviour, and what the smell is showing us we should improve:
+
+Painful merges - spending more than 10 minutes on a merge conflict, frequent conflicts, developers racing to push first to avoid conflicts
+*   Fundamentally caused by isolation between developer's work
+*   Merges get exponentially worse the longer the isolation between two developers continue
+*   Avoid isolation: try to have developers working on the same codebase as frequently as possible (very rarely more than a day with unshared code)
+*   Good branching tools have made it easy to do this wrong. Tempting to keep code on a branch for the entire feature, merge once at the end
+*   Often unnecessary - good dev task management within your story can let you push individual chunks (models, without integration; ignored tests; UIs that aren't linked to) earlier, without breaking things.
+*   Sharing this code earlier breaks isolation: conflicting changes will come up much sooner (if you change a test library, and I push my first test immediately, I find the problem immediately. If I push a whole suite + all my code and discover it doesn't work with your changes I'm in much more huge trouble)
+*   Don't need to be on a branch at all lots of the time (some different taste for git practices though)
+*   Push/merge to master every time that you can without breaking something
+*   Organise your development practices so that you make a series of standalone sequential changes, which don't break anything at each stage (good for self organisation and keeping focused regardless)
+*   Feature flags can help - they essentially let you branch an area within the same codebase, but still sharing all the rest of your changes
+*   Working together closely can be difficult, but drastically saves time and improves communication in the long run.
+                                                                                                                                                                                        
+Nervous pushes - developers not sure that when they push code, the build will pass and it'll be fine. Unsurprising build failures. Should be easy to be certain.
+*   Confidence to make changes powers quick development
+*   Nervousness slows progress, but also makes other problems worse, e.g. isolating developer's changes
+*   Confidence comes primarily from accurate and thorough tests: accurate enough that you know working code will pass, thorough enough that a pass means you genuinely haven't broken anything
+*   Need quick feedback too; high speed response at failing stages, progressive notifications on success so you know all's well. Use early rounds of smoke tests to provide faster feedback, locally and remotely.
+*   Unit test practices to do this well: looking at coverage (but not too much), no test dependencies, no build interactions, zero tolerance for unexplained test failures - will cover last point more later
+*   Integration test practices to do this well: pairing with unit testing, to focus integration tests on covering non-unit tested areas, focus on speed a little over accuracy (but only a little). Integration is where interesting failures should be happening.
+*   Test at lowest level you can while providing a realistic environment for the test case, spread test cases across levels as appropriate, more than you think.
+*   All of this needs to be totally runnably locally, with a single step, and usefully debuggable locally when it fails.
+*   Environment and setup for local vs remote tests need to be near identical to provide confidence. Should be easy to do with unit tests (or you're doing something very wrong), vagrant/docker and ansible/puppet/chef/etc can help at integration and system level. Generally gets harder the further up the test pyramid you go
+*   Confidence is what powers effective teams
+
+Rare releases - teams avoiding pushing code to production, non-recent code around that hasn't yet been tried in the real world, 
+*   Releasing is the useful bit of your work. Nothing else does anything for anybody outside your team.
+*   Sooner you release, sooner you add value. Delays also exponentially increase risk from more interactions between more & larger changes (similar to larger merges)
+*   All else being equal, more releases is always better. If the code's good, you've got it out sooner and getting feedback quicker. If it's bad, you find out before you've piled more on top of it.
+*   Stats on speed of github/facebook/flickr release cycles
+*   People avoid releasing though. They avoid usually either because it's risky, or it requires effort.
+*   In either case, "If it hurts, do it more often". Helps you find the pain points, find what fails, and pushes you to be be better. More often gives more information, and makes it easier to change.
+*   Deploy to dev-only sites more often first as an initial step (e.g. every commit), deploy everything automatically to dev/staging/other every night for extra checks (so when you pick up even an infrequently-changed project you know it's going to ship effortlessly)
+*   Make it low-risk: extremely deterministic automated processes (DevOps generally, chef/puppet/ansible etc particularly, disposable machines), identical deployment process and environments at every stage (therefore, no manual changes anywhere), 100% publically easily visible metrics, system tests that run against deployed instances (locally or remotely, on any environment) and at least smoke test every section of the site, and core workflows (can I sign up and then buy a thing), plus specific tests for anything where you're not totally confident in realisticness/coverage of integration/unit tests above.
+*   Test intentionally: add tests for something you think might break, that give you more confidence it won't break. Don't just add tests for coverage/arbitrary rules/because that's what we do.
+*   Make it easy: lots of similar steps! Automate automate automate, do it extremely frequently so it takes only one click (or less). Do the same for rollback.
+*   Easy to run by anyone to any environment - no privileged 'only Bob can release': what happens when Bob's out for lunch/on holiday/hit by a bus? Shipping software is everybody's responsibility, releasing is the most important part, needs to be a team responsibility
+*   Not improving - teams accept painful steps/ineffective processes/poor results, and awkward issues are 'normal'. Broken windows.
+*   Build is never perfect, like any tool for a job. Software is gardening not architecture, shiny pretty perfect tools mean you're focusing on the wrong thing.
+*   Need to maintain your tools/setup or it wears though (failing tests, deployment workarounds, etc), as your team and your work changes, and as you use them, gain information, and see what could be improved.
+*   Don't chase 'perfect'; chase 'effective'. Any part of the tool that is hampering the team needs be fixed as your number one priority. Otherwise it causes continual pain, and it creates a culture where you ignore (and eventually don't notice) friction and pain, and this escalates, and slows you down even more in future.
+*   Lots of reasons people don't do this. Mainly: not my problem, difficult, lack of momentum (it's been like that for 6 months)
+*   Lack of momentum is worst: very hard to get people moving again. Don't let that start. if it does, charge at it with everything you've got in a huge burst to clean up large specific thing, one at a time. Don't let failing tests/manual release workarounds/etc sit around: have somebody immediately looking at improving them, or they'll settle in as 'normal'. Eventually good people leave, bad stay, and it gets worse.
+*   Difficulty is interesting: can come from lack of focus in build setup and development. If you add lots of shiny exciting feature-filled tools that you only half use then your setup gets harder to change. Keep it simple.
+*   Keeping your build tools scriptable in the languages you use day-to-day are good too. Aim for a simple-ish build system, configured inside your project (a la Rake, Grunt, Gradle + Travis etc), not something arcane and made of XML (Maven/MSBuild) or a series of special boxes elsewhere you have to type magic into and pick dropdowns from (Jenkins).
+*   Jenkins etc are particularly awkward here; config you move into Jenkins you can't easily run identically locally, which raises the bar for changes
+*   You do need to try new things to improve, but you also need to be clean: experiment for a little bit, then commit and use it thoroughly or drop it and pull it back out.
+*   Team responsibility: you can't fix your team's build process yourself. It needs constant maintenance, and people aren't going to understand how to fix it if they're not involved. They'll treat it as somebody else's problem, and add workarounds that cause more problems. Escalates quickly.
+*   Blame culture makes this worse. Potentially embarrassing failures (e.g. blaming people for bugs in production, for failed builds, for messy merges) don't motivate people to do better, they motivate people to avoid the risk of those failures (pushing more cautiously, being scared of releases, pushing conflicts just ahead of the other person, rather than solving them together)
+*   Blame your tools and processes, not individuals: then all take responsibility and work together to make them better.
+*   Good retros help buy people in to team issues and solving them together. Do them often (weekly), so they're fast and easy. Buy people in using retros to plan and agree changes, rather than anybody making diktats. Use them to spot longterm pain (this test sometimes fails), and try and come up with specific actions that one person can commit to getting done, or concrete things the whole team can focus on. 'Be better at X' is useless. "Change this test/deployment step to avoid Y, so we no longer get X pain" or "everybody try using feature flags by default instead of long-lived branches". Discuss how things went next time.
+*   Remind yourselves of how you're all doing, and how you could all improve things: chains of successes (time since last spurious test failure), stats of release frequency. Focus on team result, not individual.
+*   Some improvements take a little practice every day: daily reminders of things the team want to do better (automated slack ping at 9am of the thing your team want to all focus on) work well
+  Work together to make things better, buy them team into doing so, and make it as easy as possible for everybody to make changes. Build a culture where people see something that could be usefully improved, and can easily immediately do it.
+
+Usability is the key: build the most effective tools you can to help your users (you) hit your goals. Don't lose sight, don't build tools that are fun/pretty/clever but aren't important, focus on what success means for your team, and which bit of your tools could make that better.
+Lots of points in here where these issues combine together and get worse and worse if unsupported, especially if you lose team momentum and dedication to doing well. Because of this, effort here is worth far more than you'd imagine in solving future pain (some good numbers in the middle of http://www.gigamonkeys.com/flowers/). Don't delay.
+Recap smells and headline solutions
+FIN
+
