@@ -12,7 +12,6 @@ var pkg = require('./package.json'),
   stylus = require('gulp-stylus'),
   autoprefixer = require('gulp-autoprefixer'),
   csso = require('gulp-csso'),
-  pdf = require('bespoke-pdf'),
   del = require('del'),
   through = require('through'),
   opn = require('opn'),
@@ -60,11 +59,6 @@ gulp.task('images', ['clean:images'], function() {
     .pipe(connect.reload());
 });
 
-gulp.task('pdf', ['connect'], function () {
-  return pdf(pkg.name + '.pdf')
-    .pipe(gulp.dest('pdf'));
-});
-
 gulp.task('clean', function(done) {
   del('dist', done);
 });
@@ -83,10 +77,6 @@ gulp.task('clean:css', function(done) {
 
 gulp.task('clean:images', function(done) {
   del('dist/images', done);
-});
-
-gulp.task('clean:pdf', function(done) {
-  del('pdf/' + pkg.name + '.pdf', done);
 });
 
 gulp.task('connect', ['build'], function() {
@@ -110,10 +100,6 @@ gulp.task('watch', function() {
   ], ['js']);
 });
 
-gulp.task('exit', ['pdf'], function () {
-  process.exit();
-});
-
 gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
@@ -122,4 +108,4 @@ gulp.task('build', ['js', 'html', 'css', 'images']);
 
 gulp.task('serve', ['open', 'watch']);
 
-gulp.task('default', ['build', 'pdf', 'exit']);
+gulp.task('default', ['build', 'exit']);
