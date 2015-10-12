@@ -36,17 +36,34 @@ body {
   font-family: "Magra", sans-serif;
 }
 
+h2 {
+  font-size: 90pt;
+}
+
 .bespoke-backdrop {
   transition-duration: 0.3s;
+  background-size: cover;
+  background-position: center;
 
   &.roses {
     background-color: #fff;
     background-image: url("../static/roses.jpg");
-    background-size: cover;
-    background-position: center;
   }
 
   &.cogs {
+    background-image: url("../static/cogs.jpg");
+  }
+  
+  &.engine {
+    background-image: url("../static/engine.jpg");
+  }
+
+  &.cat {
+    background-image: url("../static/cat.jpg");
+  }
+
+  &.coding {
+    background-image: url("../static/coding.jpg");
   }
 
   &.white {
@@ -99,6 +116,7 @@ section {
 
   &.smell {
     color: #FFF;
+    font-family: "Josefin Slab", sans-serif;
   }
 
   &.conclusion {
@@ -115,7 +133,36 @@ section {
     h2 {
       font-family: "Bangers", sans-serif;
       font-weight: normal;
-      font-size: 80pt;
+      font-size: 120pt;
+    }
+  }
+
+  &.your-build {
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+
+  &.who-cares {
+    color: #fff;
+    h2 {
+      margin-bottom: 300px;
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &.pain-is-feedback {
+    h2 {
+      font-family: "Magra", sans-serif;
+      font-weight: normal;
+      font-size: 60pt;
+    }
+
+    h3 {
+      margin: 0;
+
+      font-family: "Josefin Slab";
+      font-weight: normal;
+      font-size: 30pt;
     }
   }
 }
