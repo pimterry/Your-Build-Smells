@@ -14,14 +14,51 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
+@font-face {
+  font-family: 'Josefin Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Josefin Slab'),
+       local('JosefinSlab'),
+       url("../static/josefin-slab.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}      
+
+@font-face {
+  font-family: 'Magra';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Magra'),
+       url("../static/magra-bold.ttf") format('truetype');
+}      
+
+body {
+  font-family: "Magra", sans-serif;
+}
+
 .bespoke-backdrop {
   transition-duration: 0.3s;
 
-  &.title {
+  &.roses {
     background-color: #fff;
     background-image: url("../static/roses.jpg");
     background-size: cover;
     background-position: center;
+  }
+
+  &.cogs {
+  }
+
+  &.white {
+    background-color: #fff;
+  }
+
+  &.pink {
+    background-color: #DE2D64;
+  }
+
+  &.red {
+    background-color: #EF2040;
   }
 }
 
@@ -35,14 +72,11 @@
   }
 }
 
-h1 {
-  letter-spacing: -1px;
-  font-weight: normal;
-}
-
 section {
   &.title {
     h1 {
+      letter-spacing: -1px;
+      font-weight: normal;
       font-family: "Bangers", sans-serif;
 
       position: absolute;
@@ -60,6 +94,28 @@ section {
       background: -webkit-linear-gradient(180deg, #FF82A9, #E41052)
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &.smell {
+    color: #FFF;
+  }
+
+  &.conclusion {
+    color: #DE2D64;
+
+    h3 {
+      margin: 0;
+
+      font-family: "Josefin Slab";
+      font-weight: normal;
+      font-size: 30pt;
+    }
+
+    h2 {
+      font-family: "Bangers", sans-serif;
+      font-weight: normal;
+      font-size: 80pt;
     }
   }
 }
