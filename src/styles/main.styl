@@ -1,8 +1,59 @@
-// New to Stylus? Check out http://learnboost.github.io/stylus
-// Use modern CSS thanks to Autoprefixer: https://github.com/ai/autoprefixer
-
-// Import CSS from "node_modules" and "bower_components"
-// thanks to Stylus' "import css" and "paths" options
-
 @import 'prism/themes/prism-okaidia.css'
-// Check out "bower_components/prism/themes/" for available themes
+
+@font-face {
+  font-family: 'Bangers';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bangers'), local('Bangers-Regular'), url("../static/bangers.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+.bespoke-backdrop {
+  transition-duration: 0.3s;
+
+  &.title {
+    background-color: #fff;
+    background-image: url("../static/roses.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.bespoke-slide {
+  background-color: rgba(255, 255, 255, 0);  
+  transition: none;
+  padding: 20px;
+
+  aside {
+      display: none;
+  }
+}
+
+h1 {
+  letter-spacing: -1px;
+  font-weight: normal;
+}
+
+section {
+  &.title {
+    h1 {
+      font-family: Bangers, sans-serif;
+
+      position: absolute;
+      top: 20%;
+      left: 40px;
+      right: 50%;
+      bottom: 0;
+      text-align: left;
+
+      font-size: 85pt;
+      line-height: 99px;
+
+      color: #DE2D64;
+
+      background: -webkit-linear-gradient(180deg, #FF82A9, #E41052)
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}

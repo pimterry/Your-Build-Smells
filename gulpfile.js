@@ -53,9 +53,9 @@ gulp.task('css', ['clean:css'], function() {
     .pipe(connect.reload());
 });
 
-gulp.task('images', ['clean:images'], function() {
-  return gulp.src('src/images/**/*')
-    .pipe(gulp.dest('dist/images'))
+gulp.task('static', ['clean:static'], function() {
+  return gulp.src('src/static/**/*')
+    .pipe(gulp.dest('dist/static'))
     .pipe(connect.reload());
 });
 
@@ -75,8 +75,8 @@ gulp.task('clean:css', function(done) {
   del('dist/build/build.css', done);
 });
 
-gulp.task('clean:images', function(done) {
-  del('dist/images', done);
+gulp.task('clean:static', function(done) {
+  del('dist/static', done);
 });
 
 gulp.task('connect', ['build'], function() {
@@ -86,14 +86,10 @@ gulp.task('connect', ['build'], function() {
   });
 });
 
-gulp.task('open', ['connect'], function (done) {
-  opn('http://localhost:8080', done);
-});
-
 gulp.task('watch', function() {
   gulp.watch('src/**/*.jade', ['html']);
   gulp.watch('src/styles/**/*.styl', ['css']);
-  gulp.watch('src/images/**/*', ['images']);
+  gulp.watch('src/static/**/*', ['static']);
   gulp.watch([
     'src/scripts/**/*.js',
     'bespoke-theme-*/dist/*.js' // Allow themes to be developed in parallel
@@ -104,8 +100,8 @@ gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
-gulp.task('build', ['js', 'html', 'css', 'images']);
+gulp.task('build', ['js', 'html', 'css', 'static']);
 
-gulp.task('serve', ['open', 'watch']);
+gulp.task('serve', ['watch']);
 
 gulp.task('default', ['build', 'exit']);
