@@ -43,7 +43,7 @@ h2 {
 }
 
 h3 {
-
+  font-size: 30pt;
 }
 
 strong {
@@ -82,6 +82,19 @@ article {
 
   &.isolation {
     background-image: url("../static/isolation.jpg");
+  }
+
+  &.branches {
+    background-image: url("../static/branches.png");
+  }
+
+  &.share {
+    background-image: url("../static/share.jpg");
+  }
+
+  &.switch {
+    background-image: url("../static/switch.jpg");
+    background-position: 30% center;
   }
 
   &.white {
@@ -198,7 +211,6 @@ section {
 
     &:before {
       content: '\2192'
-      color: #606060;
 
       position: absolute;
       left: 190px;
@@ -216,7 +228,6 @@ section {
 
       font-family: "Josefin Slab";
       font-weight: normal;
-      font-size: 30pt;
     }
 
     h2 {
@@ -251,14 +262,12 @@ section {
 
       font-family: "Josefin Slab";
       font-weight: normal;
-      font-size: 30pt;
     }
   }
 
   &.conflict {
-    & > * {
-      color: #fff;
-    }
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   }
 
   &.isolation {
@@ -268,7 +277,36 @@ section {
     }
   }
 
-  &.minutes-merging {
+  &.branches {
     color: #fff;
+    h2 {
+      position: absolute;
+      left: 55%;
+      top: 30%;
+      text-align: left;
+
+      font-size: 50pt;
+      line-height: 50pt;
+    }
+  }
+
+  &.share-early, &.share-all, &.feature-flags {
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+
+  &.share-early {
+    h2 {
+      margin-top: 220px;
+    }
+  }
+
+  &.feature-flags {
+    h2 {
+      text-align: left;
+      position: absolute;
+      left: 30%;
+      top: 25%;
+    }
   }
 }
