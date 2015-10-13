@@ -1,3 +1,4 @@
+@import 'default'
 @import 'prism/themes/prism-okaidia.css'
 
 @font-face {
@@ -37,16 +38,25 @@ body {
 }
 
 h2 {
-  font-size: 90pt;
+  font-size: 84pt;
+  line-height: 85pt;
 }
 
-.bespoke-backdrop {
-  transition-duration: 0.3s;
+h3 {
+
+}
+
+strong {
+  color: #DE2D64;
+}
+
+article {
   background-size: cover;
   background-position: center;
+  background-color: #fff;
+  transition: none !important;
 
   &.roses {
-    background-color: #fff;
     background-image: url("../static/roses.jpg");
   }
 
@@ -64,6 +74,14 @@ h2 {
 
   &.coding {
     background-image: url("../static/coding.jpg");
+  }
+
+  &.conflict {
+    background-image: url("../static/conflict.jpg");
+  }
+
+  &.isolation {
+    background-image: url("../static/isolation.jpg");
   }
 
   &.white {
@@ -97,7 +115,7 @@ section {
       font-family: "Bangers", sans-serif;
 
       position: absolute;
-      top: 20%;
+      top: 16%;
       left: 40px;
       right: 50%;
       bottom: 0;
@@ -112,6 +130,43 @@ section {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    address {
+      letter-spacing: -0.8px;
+
+      font-family: 'Magra';
+      font-style: initial;
+      font-size: 20pt;
+      
+      .nickname {
+        position: absolute;
+        left: 42px;
+        bottom: 48px;
+        color: #E41052;
+      }
+
+      a.org {
+        color: #6ea0b0;
+
+        .i {
+          color: #00548e;
+        }
+
+        position: absolute;
+        bottom: 48px;
+        left: 222px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: bolder;
+
+        &:hover {
+          font-style: underline;
+        }
+      }
+    }
   }
 
   &.smell {
@@ -120,6 +175,40 @@ section {
   }
 
   &.conclusion {
+    color: #DE2D64;
+    padding-left: 250px;
+    align-items: flex-start;
+
+    h3.smell {
+      position: absolute;
+      top: 200px;
+      left: 20px;
+      width: 200px;
+
+      font-family: "Josefin Slab";
+      font-weight: normal;
+      font-size: 30pt;
+    }
+
+    h2 {
+      font-family: "Bangers", sans-serif;
+      font-weight: normal;
+      font-size: 80pt;
+    }
+
+    &:before {
+      content: '\2192'
+      color: #606060;
+
+      position: absolute;
+      left: 190px;
+      top: 200px;
+      font-size: 50pt;
+      font-family: "Josefin Slab";
+    }
+  }
+
+  &.usability {
     color: #DE2D64;
 
     h3 {
@@ -139,7 +228,7 @@ section {
 
   &.your-build {
     color: #fff;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   }
 
   &.who-cares {
@@ -164,5 +253,22 @@ section {
       font-weight: normal;
       font-size: 30pt;
     }
+  }
+
+  &.conflict {
+    & > * {
+      color: #fff;
+    }
+  }
+
+  &.isolation {
+    h2 {
+      margin-top: 350px;
+      color: #fff;
+    }
+  }
+
+  &.minutes-merging {
+    color: #fff;
   }
 }

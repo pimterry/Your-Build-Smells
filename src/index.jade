@@ -9,30 +9,86 @@ html
 
   body
     article
-      section(data-bespoke-backdrop="roses").title
+      section(data-bespoke-state="roses").title
         h1 Your Build Smells
 
-      section(data-bespoke-backdrop="cogs").your-build
+        address.vcard
+          a.nickname.url(href='http://twitter.com/pimterry',rel="me") @pimterry
+          div.org.vcard
+            a.org.fn.url(href='http://softwire.com',rel="group") Softw<span class="i">i</span>re
+
+      section(data-bespoke-state="cogs").your-build
         h2 Your build
 
-      section(data-bespoke-backdrop="cat").who-cares
+      section(data-bespoke-state="cat").who-cares
         h2 Who cares? 
 
-      section(data-bespoke-backdrop="white").conclusion
+      section(data-bespoke-state="white").usability
         div(style='text-align: left')
           h3 It's about
           h2 USABILITY
 
-      section(data-bespoke-backdrop="white").pain-is-feedback
+      section(data-bespoke-state="white").pain-is-feedback
         h2 Developer pain
         h3 is
         h2 User feedback
 
-      section(data-bespoke-backdrop="pink").smell
+      section(data-bespoke-state="pink").smell
         h2 PAINFUL MERGES
 
-      section(data-bespoke-backdrop="white").conclusion
-        h2 CONCLUSION
+      section(data-bespoke-state="conflict").conflict
+        h2 Conflicts are <strong>avoidable</strong>
+        h3 (usually)
+
+      section(data-bespoke-state="isolation").isolation
+        h2 Isolation
+
+      section(data-bespoke-state="branching").branching
+        h2 Branch only when it's useful
+
+      section(data-bespoke-state="share-early").share-early
+        h2 Share early
+
+      section(data-bespoke-state="share-all").share-all
+        h2 Share
+        h2 tests
+        h2 early
+
+      section(data-bespoke-state="share-all").share-all
+        h2 Share
+        h2 models
+        h2 early
+
+      section(data-bespoke-state="share-all").share-all
+        h2 Share
+        h2 everything
+        h2 early
+
+      section(data-bespoke-state="switch").feature-flags
+        h2 Feature flags
+
+      section(data-bespoke-state="white").conclusion
+        h3.smell Painful merges
+        h2 SMALL
+        h2 FREQUENT
+        h2 EASY
+        h2 MERGES
+
+      section(data-bespoke-state="pink").smell
+        h2 NERVOUS PUSHES
+
+      section(data-bespoke-state="pink").smell
+        h2 RARE RELEASES
+
+      section(data-bespoke-state="pink").smell
+        h2 NOT IMPROVING
+
+      section(data-bespoke-state="white").smells
+        ul
+          li PAINFUL MERGES
+          li NERVOUS PUSHES
+          li RARE RELEASES
+          li NOT IMPROVING
 
     script(src='build/build.js')
     <link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>

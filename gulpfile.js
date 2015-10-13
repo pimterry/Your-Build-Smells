@@ -102,6 +102,6 @@ gulp.task('deploy', ['build'], function(done) {
 
 gulp.task('build', ['js', 'html', 'css', 'static']);
 
-gulp.task('serve', ['watch']);
+gulp.task('serve', ['connect', 'watch']);
 
 gulp.task('default', ['build', 'exit']);

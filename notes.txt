@@ -43,7 +43,8 @@ Rare releases - teams avoiding pushing code to production, non-recent code aroun
 *   Test intentionally: add tests for something you think might break, that give you more confidence it won't break. Don't just add tests for coverage/arbitrary rules/because that's what we do.
 *   Make it easy: lots of similar steps! Automate automate automate, do it extremely frequently so it takes only one click (or less). Do the same for rollback.
 *   Easy to run by anyone to any environment - no privileged 'only Bob can release': what happens when Bob's out for lunch/on holiday/hit by a bus? Shipping software is everybody's responsibility, releasing is the most important part, needs to be a team responsibility
-*   Not improving - teams accept painful steps/ineffective processes/poor results, and awkward issues are 'normal'. Broken windows.
+
+Not improving - teams accept painful steps/ineffective processes/poor results, and awkward issues are 'normal'. Broken windows.
 *   Build is never perfect, like any tool for a job. Software is gardening not architecture, shiny pretty perfect tools mean you're focusing on the wrong thing.
 *   Need to maintain your tools/setup or it wears though (failing tests, deployment workarounds, etc), as your team and your work changes, and as you use them, gain information, and see what could be improved.
 *   Don't chase 'perfect'; chase 'effective'. Any part of the tool that is hampering the team needs be fixed as your number one priority. Otherwise it causes continual pain, and it creates a culture where you ignore (and eventually don't notice) friction and pain, and this escalates, and slows you down even more in future.

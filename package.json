@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "dependencies": {
+    "bespoke-classes": "^1.0.0",
+    "bespoke-state": "^1.0.0",
     "gulp": "^3.9.0"
   },
   "devDependencies": {
