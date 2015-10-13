@@ -1,6 +1,9 @@
 @import 'default'
 @import 'prism/themes/prism-okaidia.css'
 
+pink = #DE2D64;
+blue = #3988D2;
+
 @font-face {
   font-family: 'Bangers';
   font-style: normal;
@@ -47,7 +50,20 @@ h3 {
 }
 
 strong {
-  color: #DE2D64;
+  color: pink;
+}
+
+q {
+  font-style: italic;
+  white-space:nowrap;
+
+  &:before, &:after {
+    font-style: initial;
+  }
+
+  &:after {
+    margin-left: 10px;
+  }
 }
 
 article {
@@ -97,16 +113,21 @@ article {
     background-position: 30% center;
   }
 
+  &.explosion {
+    background-image: url("../static/explosion.jpg");
+  }
+
+  &.confidence {
+    background-image: url("../static/confidence.jpg");
+    background-position: top center;
+  }
+
   &.white {
     background-color: #fff;
   }
 
   &.pink {
-    background-color: #DE2D64;
-  }
-
-  &.red {
-    background-color: #EF2040;
+    background-color: pink;
   }
 }
 
@@ -137,7 +158,7 @@ section {
       font-size: 85pt;
       line-height: 99px;
 
-      color: #DE2D64;
+      color: pink;
 
       background: -webkit-linear-gradient(180deg, #FF82A9, #E41052)
       -webkit-background-clip: text;
@@ -188,7 +209,7 @@ section {
   }
 
   &.conclusion {
-    color: #DE2D64;
+    color: pink;
     padding-left: 250px;
     align-items: flex-start;
 
@@ -221,7 +242,7 @@ section {
   }
 
   &.usability {
-    color: #DE2D64;
+    color: pink;
 
     h3 {
       margin: 0;
@@ -309,4 +330,85 @@ section {
       top: 25%;
     }
   }
+
+  &.just-push-it, &.run-it-again {
+    h2 {
+      color: #fff;
+      font-size: 75pt;
+      text-shadow: 0 0 20px #000;
+    }
+    
+    img {
+      height: 40%;
+    }
+  }
+
+  &.confidence {
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  &.confidence-requires {
+    padding: 0;
+    h2 {
+      font-size: 70pt;
+      width: 100vw;
+      height: 20vh;
+    }
+  }
+
+  h2 {
+    &.accuracy, &.thoroughness, &.speed, &.simplicity {
+      font-size: 70pt;
+      width: 100vw;
+    }
+
+    &.accuracy {
+      background-color: blue;
+      color: white;
+    }
+
+    &.thoroughness {
+      background-color: white;
+      color: pink;
+    }
+
+    &.speed {
+      background-color: pink;
+      color: white;
+    }
+
+    &.simplicity {
+      background-color: white;
+      color: blue;
+    }
+  }
+
+  &.accuracy, &.simplicity {
+    color: blue;
+  }
+
+  &.thoroughness, &.speed {
+    color: pink;
+  }
+}
+
+ul.bullet {
+  margin: 30px 0;
+  list-style: none;
+  font-size: 25pt;
+
+  li {
+    margin 10px 0;
+
+    &.bespoke-bullet-inactive {
+      transform: initial;
+      -webkit-transform: initial;
+      transition: initial;
+
+      opacity: 1;
+      visibility: hidden;
+    }
+  }
+
 }

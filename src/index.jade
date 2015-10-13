@@ -46,7 +46,7 @@ html
         h2 Isolation
 
       section(data-bespoke-state="branches").branches
-        h2 Branch only when it's useful
+        h2 Branch with purpose
 
       section(data-bespoke-state="share").share-early
         h2 Share early
@@ -78,6 +78,71 @@ html
 
       section(data-bespoke-state="pink").smell
         h2 NERVOUS PUSHES
+
+      section(data-bespoke-state="explosion").just-push-it
+        h2
+          q 
+            | Just push it
+            br
+            | and see
+
+      section(data-bespoke-state="explosion").run-it-again
+        h2.failed BUILD FAILED
+        img(src="static/loop.png")
+        h2.again
+          q Run it again
+
+      section(data-bespoke-state="confidence").confidence
+        h2 Confidence
+        aside
+          ul
+            li Confidence = knowing pushing won't break anything
+            li Lack of confidence makes other bits worse, e.g. isolation
+
+      section.confidence-requires
+        h2.accuracy Accuracy
+        h2.thoroughness Thoroughness
+        h2.speed Speed
+        h2.simplicity Simplicity
+
+      section.accuracy
+        h2.accuracy Accuracy
+        ul.bullet
+          li
+          li No dependencies
+          li Identical environments
+          li Zero tolerance
+
+      section.thoroughness
+        h2.thoroughness Thoroughness
+        ul.bullet
+          li
+          li Monitor coverage <small>(a bit)</small>
+          li Cover every risk <em>somewhere</em>
+          li Test what might fail
+
+      section.speed
+        h2.speed Speed
+        ul.bullet
+          li
+          li <em>Watchable</em> unit tests
+          li Smoke test suites
+          li Quick feedback
+
+      section.simplicity
+        h2.simplicity Simplicity
+        ul.bullet
+          li
+          li One click
+          li Zero setup
+          li Easy debugging
+
+      section.conclusion
+        h3.smell Nervous pushes
+        h2 TESTED
+        h2 QUICK
+        h2 CONFIDENT
+        h2 PUSHES
 
       section(data-bespoke-state="pink").smell
         h2 RARE RELEASES

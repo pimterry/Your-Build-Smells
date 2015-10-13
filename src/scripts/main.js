@@ -13,7 +13,7 @@ bespoke.from('article', [
   classes(),
   keys(),
   touch(),
-  bullets('li.bullet'),
+  bullets('ul.bullet li'),
   state(),
   scale(),
   hash()
