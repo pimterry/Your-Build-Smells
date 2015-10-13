@@ -138,6 +138,10 @@ article {
     background-image: url("../static/broken.jpg");
   }
 
+  &.garden {
+    background-image: url("../static/flowers.jpg");
+  }
+
   &.white {
     background-color: #fff;
   }
@@ -508,9 +512,73 @@ section {
     }
   }
 
+  &.gardening {
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    h2 {
+      margin-top: 120px;
+    }
+  }
+
+  &.why-not-improving {
+    padding: 0;
+
+    h2 {
+      height: 33.4vh;
+      padding-top: 33px !important;
+    }
+  }
+
+  h2 {
+    &.momentum, &.difficulty, &.not-my-problem {
+      font-size: 70pt;
+      line-height: 70pt;
+      width: 100vw;
+      padding: 10px 0;
+    }
+
+    &.momentum {
+      background-color: pink;
+      color: white;
+    }
+
+    &.difficulty {
+      background-color: white;
+      color: pink;
+    }
+
+    &.not-my-problem {
+      background-color: blue;
+      color: white;
+    }
+  }
+
   &.cant-fix {
     h2 {
       font-size: 60pt;
+    }
+  }
+
+  &.cumulative {
+    h2 {
+      font-size: 60pt;
+    }
+
+    h2.cumulative {
+      font-family: "Bangers", sans-serif;
+      font-size: 80pt;
+      letter-spacing: 4px;
+      color: pink;
+    }
+  }
+
+  &.smells {
+    h2 {
+      width: 100%;
+      height: 25vw;
+      display: inline-block;
+      font-size: 50pt;
+      color: pink;
     }
   }
 }

@@ -251,19 +251,19 @@ html
           | not architecture
 
       section.why-not-improving
-        h2 Lack of momentum
-        h2 Difficult
-        h2 Not my problem
+        h2.momentum No momentum
+        h2.difficulty Hard to change
+        h2.not-my-problem Not my problem
 
       section.momentum
-        h2 No momentum
+        h2.momentum No momentum
 
       section(data-bespoke-state="jump-start").jump-start
         h2 Jump start it
         h3 (One area at a time)
 
       section.hard-to-change
-        h2 Hard to change
+        h2.difficulty Hard to change
 
       section
         h2 Keep it simple
@@ -278,7 +278,7 @@ html
           | explicitly
 
       section
-        h2 Not my problem
+        h2.not-my-problem Not my problem
 
       section.cant-fix
         h2
@@ -312,12 +312,29 @@ html
         h2 OFTEN
         h2 WITH FOCUS
 
+      section(data-bespoke-state="white").usability
+        div(style='text-align: left')
+          h3 It's about
+          h2 USABILITY
+
+      section(data-bespoke-state="cumulative").cumulative
+        h2 Improvements
+        h3 are
+        h2.cumulative CUMULATIVE
+
       section(data-bespoke-state="white").smells
-        ul
-          li PAINFUL MERGES
-          li NERVOUS PUSHES
-          li RARE RELEASES
-          li NOT IMPROVING
+        h2 PAINFUL MERGES
+        h2 NERVOUS PUSHES
+        h2 RARE RELEASES
+        h2 NOT IMPROVING
+
+      section(data-bespoke-state="roses").title
+        h1 Your Build Smells
+
+        address.vcard
+          a.nickname.url(href='http://twitter.com/pimterry',rel="me") @pimterry
+          div.org.vcard
+            a.org.fn.url(href='http://softwire.com',rel="group") Softw<span class="i">i</span>re
 
     script(src='build/build.js')
     <link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
