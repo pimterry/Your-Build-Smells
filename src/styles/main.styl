@@ -51,6 +51,9 @@ h3 {
 
 strong {
   color: pink;
+  font-family: "Bangers", "Magra", sans-serif;
+  font-weight: bold;
+  letter-spacing: 4px;
 }
 
 q {
@@ -120,6 +123,10 @@ article {
   &.confidence {
     background-image: url("../static/confidence.jpg");
     background-position: top center;
+  }
+
+  &.liftoff {
+    background-image: url("../static/liftoff.jpg");
   }
 
   &.white {
@@ -390,6 +397,36 @@ section {
 
   &.thoroughness, &.speed {
     color: pink;
+  }
+
+  &.releasing-is-value, &.release-sooner {
+    h2 {
+      color: #fff;
+      font-size: 60pt;
+      line-height: 60pt;
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+      position: absolute;
+      top: 30px;
+      left: 34%;
+      width: 80%;
+
+      strong {
+        position: relative;
+        top: 7px;
+      }
+    }
+  }
+
+  &.github, &.etsy, &.netflix, &.facebook {
+    h2 {
+      font-size: 58pt;
+      line-height: 58pt;
+      
+      strong {
+        font-size: 90pt;
+      }
+    }
   }
 }
 
