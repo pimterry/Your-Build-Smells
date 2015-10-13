@@ -162,6 +162,13 @@ html
           br
           | value
 
+      section.facebook
+        img(src='static/facebook.png')
+        h2
+          strong 2
+          br
+          | releases per day
+
       section.github
         img(src='static/github.png')
         h2
@@ -183,12 +190,49 @@ html
           br
           | releases per day
 
-      section.facebook
-        img(src='static/facebook.png')
-        h2
-          strong 2
-          br
-          | releases per day
+      section
+        h2 Why not?
+
+      section(data-bespoke-state='half-half').half-half
+        div.left
+          h2 RISKY
+        div.right
+          h2 HARD
+
+      section.lower-risk
+        h2 Reduce the risk
+        ul.bullet
+          li
+          li Consistent environments
+          li Automate <em>everything</em>
+          li Measure <em>everything</em>
+          li Test it
+
+      section.make-it-easy
+        h2 Make it easy
+        ul.bullet
+          li
+          li Automate <em>everything</em>
+          li One click
+          li One click rollback
+          li Everyone deploys
+
+      section.if-it-hurts
+        blockquote
+          p If it hurts, do it more frequently
+          cite Jez Humble
+        ul.bullet
+          li
+          li Deploy every commit
+          li Dev environments first
+          li Nightly deploys
+
+      section.conclusion
+        h3.smell Rare releases
+        h2 EASY
+        h2 LOW-RISK
+        h2 FREQUENT
+        h2 RELEASES
 
       section(data-bespoke-state="pink").smell
         h2 NOT IMPROVING
