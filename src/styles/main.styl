@@ -134,6 +134,10 @@ article {
     background-image: linear-gradient(90deg, blue 50%, pink 50%);
   }
 
+  &.broken {
+    background-image: url("../static/broken.jpg");
+  }
+
   &.white {
     background-color: #fff;
   }
@@ -240,6 +244,7 @@ section {
       font-family: "Bangers", sans-serif;
       font-weight: normal;
       font-size: 80pt;
+      line-height: 80pt;
     }
 
     &:before {
@@ -250,6 +255,13 @@ section {
       top: 200px;
       font-size: 50pt;
       font-family: "Josefin Slab";
+    }
+
+    &.improving {
+      h2 {
+        font-size: 70pt;
+        line-height: 70pt;
+      }
     }
   }
 
@@ -475,9 +487,28 @@ section {
     ul {
       color: pink;
     }
+
+    h2 {
+      font-size: 60pt;
+    }
   }
 
-  &.lower-risk, &.make-it-easy {
+  &.normal {
+    h2 {
+      color: #fff;
+      font-size: 50pt;
+      line-height: 50pt;
+      
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+      position: absolute;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &.cant-fix {
     h2 {
       font-size: 60pt;
     }
