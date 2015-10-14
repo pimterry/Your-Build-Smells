@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Your Build Smells</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body>
+    <article>
+      <section data-bespoke-state="roses" class="title">
+        <h1>Your Build Smells</h1>
+        <address class="vcard"><a href="http://twitter.com/pimterry" rel="me" class="nickname url">@pimterry</a>
+          <div class="org vcard"><a href="http://softwire.com" rel="group" class="org fn url">softw<span class="i">i</span>re</a></div>
+        </address>
+        <aside>
+          <ul>
+            <li>Tim Perry</li>
+            <li>@pimterry</li>
+            <li>Softwire</li>
+            <li>Automated builds - signs they're not working well, and what we can do about that</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="softwire"><img src="static/softwire-logo.png" style="width: 60%">
+        <aside>
+          <ul>
+            <li>Context first</li>
+            <li>We build software for everybody else</li>
+            <li>Offices in London and Bristol</li>
+            <li>We see a lot of different projects, with a huge range of practices and levels of quality</li>
+            <li>I want to look at some notable issues where things work particularly badly</li>
+            <li>And look at effective ways we've found to make them work better</li>
+            <li>Should note: we're always hiring, and we are available for hire</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="cogs" class="your-build">
+        <h2>Your build</h2>
+        <aside>
+          <ul>
+            <li>I'm here to talk about builds</li>
+            <li>Specifically, I'm talking about the tools and processes you use to manage development within a team</li>
+            <li>Both automated processes here and manual steps</li>
+            <li>The people who'll get most out of this really are technical leads, and people aiming that way</li>
+            <li>It's stuff everybody who uses this needs to care about though</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="cat" class="who-cares">
+        <h2>Who cares? </h2>
+        <aside>
+          <ul>
+            <li>Why should we care more about this though?</li>
+            <li>Presumably evereybody here is getting software into customer's hands already</li>
+            <li>Or has a good plan to</li>
+            <li></li>
+            <li>Our builds are the pipeline that take the code we write, and eventually make it useful in a customer's hands</li>
+            <li>Without that, you're nothing</li>
+            <li>With that, you're actually creating value.</li>
+            <li>The bit where customers get something is the point where software development gets useful</li>
+            <li>Your build is the tool you use to actually add value to the world</li>
+            <li></li>
+            <li>We see a lot of teams where their builds slow them down and get in the way</li>
+            <li>Where they implement lots of processes aimed at avoiding mistakes, rather than driving success</li>
+            <li>Or lots of shiny fun tools that are fun to set up but aren't very useful</li>
+            <li>This costs a lot of time and money and happiness</li>
+            <li>If we can improve this, we can deliver better software, faster, with less pain along the way</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="white" class="usability">
+        <div style="text-align: left">
+          <h3>It's about</h3>
+          <h2>USABILITY</h2>
+        </div>
+        <aside>
+          <ul>
+            <li>There's an interesting point that runs through this, about usability</li>
+            <li>Your build is essentially a product</li>
+            <li>You and your team are the users</li>
+            <li>You're using the product with a goal in mind: you want to ship useful products to your customers</li>
+            <li>We can apply lots of usability ideas to all of this</li>
+            <li>What are the obstacles getting in the way of our users?</li>
+            <li>How can we make it easier for users to do the sensible thing?</li>
+            <li>How can we guide them to understanding and using the software more easily?</li>
+            <li>How can we get the build out of the way, so our users can get on with doing what's important?</li>
+            <li></li>
+            <li>Fortunately, you have an advantage, because you are your own most important users</li>
+            <li>You can get the kind of user feedback UX designers can only dream of</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="white" class="pain-is-feedback">
+        <h2>Developer pain</h2>
+        <h3>is</h3>
+        <h2>User feedback</h2>
+        <aside>
+          <ul>
+            <li>It's important to use this, and that's where this talk comes in</li>
+            <li>You and your team know how well your build works for what you want from it</li>
+            <li>You've got a good idea what could be better already</li>
+            <li>You need to listen to this feedback, and use it to help you improve</li>
+            <li>That's what we're going to do</li>
+            <li>We're going to look at some developer pain, some build smells, if you will</li>
+            <li>and try and see how we can use it to improve our builds</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="pink" class="smell">
+        <h2>PAINFUL MERGES</h2>
+        <aside>
+          <ul>
+            <li>Team -&gt; occasional merge conflicts</li>
+            <li>Seen teams where somebody spends a day a week resolving conflicts</li>
+            <li>Teams where whole phases on the projects are done on many branches, combined at the end</li>
+            <li>Even on a small scale: who has raced to push a commit?</li>
+            <li>All of these smell - something is bad</li>
+            <li>Doesn't just waste time</li>
+            <li>Makes refactoring nearly impossible - secret unknowable dependencies</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="conflict" class="conflict">
+        <h2>Conflicts</h2>
+        <h2>are</h2>
+        <h2>avoidable</h2>
+        <h3>(usually)</h3>
+        <aside>
+          <ul>
+            <li>Many of these conflicts are avoidable</li>
+            <li>Usually syntactic conflicts: two independent changes in the sme code</li>
+            <li>Both adding two fields, but on the same line</li>
+            <li></li>
+            <li>Sometimes semantic conflicts: two interacting changes, but easily reconcilable once you know both are required</li>
+            <li>Slightly changing the return type of a method, and using the method elsewhere</li>
+            <li></li>
+            <li>Rarely fundamental design conflicts: you want to do X, I want conflicting Y, X+Y are mutually exclusive</li>
+            <li>Changing the return type of a method to two drastically different things</li>
+            <li></li>
+            <li>Everything but fundamental conflicts is resolvable earlier, potentially invisibly</li>
+            <li>Syntactic and simple semantic conflicts would be unnoticable if we had make the changes in sequence.</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="isolation" class="isolation">
+        <h2>Isolation</h2>
+        <aside>
+          <ul>
+            <li>Happens because of isolation</li>
+            <li>My lLocal/branch codebase is isolated from yours</li>
+            <li>I keep my changes secret</li>
+            <li>You can't build changes that work with mine</li>
+            <li>Lots of resolution would be trivial with shared info</li>
+            <li>Renaming a field</li>
+            <li>Gets exponentially worse</li>
+            <li>Isolation can have benefits, but has a large cost</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="share" class="share-early">
+        <h2>Share early</h2>
+        <aside>
+          <ul>
+            <li>Simple solution: share your code</li>
+            <li>Share at the earliest point you can</li>
+            <li>Potentially makes conflicts disappear</li>
+            <li>Even unavoidable conflicts come up earlier, easier</li>
+            <li>Usually as soon as it doesn't break anything</li>
+            <li>Don't keep things local or on branches, push them sooner</li>
+            <li>Easier said than done.</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="coding" class="share-all">
+        <h2>Share</h2>
+        <h2>tests</h2>
+        <h2>early</h2>
+        <aside>
+          <ul>
+            <li>Tests are easy</li>
+            <li>If you've got a passing test written, commit it and push it now</li>
+            <li>Bam; nobody will secretly break your test. Potential conflict: dead. No cost.</li>
+            <li>If you've got a failing test written but compiling, ignore it and push it now</li>
+            <li>Other developers can optionally run your test</li>
+            <li>Changes to code it uses get found trivially by other devs</li>
+            <li>Changing mocks, renaming classes used, refactoring methods, etc etc</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="coding" class="share-all">
+        <h2>Share</h2>
+        <h2>models</h2>
+        <h2>early</h2>
+        <aside>
+          <ul>
+            <li>Adding or renaming fields can often be done without breaking anything</li>
+            <li>New method on model, new models entirely</li>
+            <li>Gets the code shared, highlights issues earlier</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="coding" class="share-all">
+        <h2>Share</h2>
+        <h2>everything</h2>
+        <h2>early</h2>
+        <aside>
+          <ul>
+            <li>Anywhere you can: if it doesn't break anything, share it</li>
+            <li>Try to do work in small chunks, without breaking things</li>
+            <li>Good practice for keeping focus and not yak-shaving</li>
+            <li>Many small standalone changes make bisection and history understanding clearer</li>
+            <li>Lots of small incremental changes, avoid the big bang</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="switch" class="feature-flags">
+        <h2>Feature flags</h2>
+        <aside>
+          <ul>
+            <li>Feature flags/toggles let you toggle between two implementations</li>
+            <li>Show new page design</li>
+            <li>Change algorithm used</li>
+            <li>Lets you branch in code</li>
+            <li>Changes automatically work, other developers see conflicts instantly</li>
+            <li>Some caution, easy to go to far</li>
+            <li>Last resort, when you can't finish but you have something that doesn't break anything</li>
+            <li>Popular as a feature themselves though: lanyrd/github/twilio/loads use for beta/alpha/AB tests</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="branches" class="branches">
+        <h2>Branch for a reason</h2>
+        <aside>
+          <ul>
+            <li>VCS nowdays makes branching very easy</li>
+            <li>It's a useful powerful tool</li>
+            <li>It's not always the right tool</li>
+            <li>Lots of good reasons: developing very experimental code</li>
+            <li>Tracking released/development branches potentially helpful</li>
+            <li>Hotfixes etc</li>
+            <li>Main benefit of feature branches is beauty though</li>
+            <li>Not a good reason.</li>
+            <li>Even with reviews: can review while you merge; aim for lots of smaller reviews</li>
+            <li>Bisection is the another argument</li>
+            <li>If you almost always push working complete commits, doesn't matter</li>
+            <li>Never seen any project slowed by too few branches</li>
+            <li>Seen loads slowed by too many</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="white" class="conclusion">
+        <h3 class="smell">Painful merges</h3>
+        <h2>SMALL</h2>
+        <h2>FREQUENT</h2>
+        <h2>EASY</h2>
+        <h2>MERGES</h2>
+        <aside>
+          <ul>
+            <li>First one down</li>
+            <li>If you ever find yourself fighting merging</li>
+            <li>Racing to push, keeping things on branches, throwing time at conflicts</li>
+            <li>Break it down</li>
+            <li>Push earlier</li>
+            <li>Push smaller</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="pink" class="smell">
+        <h2>NERVOUS PUSHES</h2>
+        <aside>
+          <ul>
+            <li>So we want to push lots of small changess</li>
+            <li>One of the reasons people don't do that is because pushing can be scary</li>
+            <li>Been on teams where build after push usually broke something</li>
+            <li>You pushed, then sat refreshing the build monitor</li>
+            <li></li>
+            <li>Makes you push less</li>
+            <li>Distracting too: you want to be able to push and move on</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="explosion" class="just-push-it">
+        <h2>
+          <q>Just push it<br>and see</q>
+        </h2>
+        <aside>
+          <ul>
+            <li>Anybody ever heard somebody say this?</li>
+            <li>Anybody ever said this?</li>
+            <li>This smells</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="explosion" class="run-it-again">
+        <h2 class="failed">BUILD FAILED</h2><img src="static/loop.png">
+        <h2 class="again">
+          <q>Run it again</q>
+        </h2>
+        <aside>
+          <ul>
+            <li>How about this?</li>
+            <li>If you bought a product, tried to use the thing it's made for, and it failed half the time</li>
+            <li>This smells</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="confidence" class="confidence">
+        <h2>Confidence</h2>
+        <aside>
+          <ul>
+            <li>Confidence = knowing pushing won't break anything</li>
+            <li>Lack of confidence makes other bits worse, e.g. isolation</li>
+            <li>Push it and see = no confidence in the state of code we're building on our machine</li>
+            <li>Run it again = no confidence in the state of code, even after we've already run the build once</li>
+            <li>Confidence lets you go fast; focus on development, no distractions, no pressure to slow down</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="confidence-requires">
+        <h2 class="accuracy">Accuracy</h2>
+        <h2 class="thoroughness">Thoroughness</h2>
+        <h2 class="speed">Speed</h2>
+        <h2 class="simplicity">Simplicity</h2>
+        <aside>
+          <ul>
+            <li>Four things you want from a build to get confidence</li>
+            <li>Accuracy</li>
+            <li>Thoroughness</li>
+            <li>Speed</li>
+            <li>Simplicity</li>
+            <li>Mostly test focused here, but also linting tools etc, and even compilation steps</li>
+            <li>Let's go through them</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="accuracy">
+        <h2 class="accuracy">Accuracy</h2>
+        <ul class="bullet">
+          <li></li>
+          <li>No dependencies</li>
+          <li>Identical environments</li>
+          <li>Zero tolerance</li>
+        </ul>
+        <aside>
+          <ul>
+            <li>Your build needs to be accurate: if the code works, it should pass</li>
+            <li>Consistently, and reliably, with no exceptions</li>
+            <li>If working code fails and messes up your flow, you run the build as little as possible</li>
+            <li>And you ignore actually useful failures when they happen</li>
+            <li></li>
+            <li>Unit tests should need nothing from their environment at all</li>
+            <li>Integration and system level tests might, but try to limit as much as possible.</li>
+            <li>Any external dependencies make your code worse</li>
+            <li>Bundle DBs/servers/service stubs with your codebase, start them in the tests</li>
+            <li></li>
+            <li>Identical environments - tests should run in identical contexts all the time</li>
+            <li>Vagrant, Docker, etc can help with doing this for dev environment</li>
+            <li>Unit tests should have no dependencies, should be trivial</li>
+            <li></li>
+            <li>Zero tolerance for failure</li>
+            <li>Occasional failures are poisonous: seems cheap, but undermines quality completely</li>
+            <li>As soon as you have any, you start disconting failures, and being nervous about ok builds</li>
+            <li>Chase them disproportionately</li>
+            <li>Better to have no tests than intermittently failing tests (if you can't fix them)</li>
+            <li>PHP - 5.3.7</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="thoroughness">
+        <h2 class="thoroughness">Thoroughness</h2>
+        <ul class="bullet">
+          <li></li>
+          <li>Monitor coverage <small>(a bit)</small></li>
+          <li>Cover every risk <em>somewhere</em></li>
+          <li>Test what might fail</li>
+        </ul>
+        <aside>
+          <ul>
+            <li>Your build needs to be thorough: if it passes, the code works</li>
+            <li>Need to be confident, or you can't share your code with others</li>
+            <li>If build isn't thorough, you'll have to be manually thorough</li>
+            <li>You won't be</li>
+            <li></li>
+            <li>Make coverage visible in your team (monitors), and preferably your tools (NCrunch/Wallaby)</li>
+            <li>Coverage isn't perfect, don't chase arbitrary targets</li>
+            <li>But it is useful information, and overall trends and areas covered is important</li>
+            <li></li>
+            <li>You don't have to test every case at every level</li>
+            <li>If you have unit tests thoroughly checking certain behaviour, you probably don't need system tests too</li>
+            <li>Instead have system tests that do an overall chcek that it all works, and leave the detail to the unit tests</li>
+            <li></li>
+            <li>Don't test trivialities</li>
+            <li>If there's no way this test is ever going to fail, don't write it</li>
+            <li>Usually that means, test the same functionality, but further up the stack</li>
+            <li>Up is more complicated, so there's more to break</li>
+            <li>This is purely for QA; if you like TDD, TDD everything, but not for testing alone</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="speed">
+        <h2 class="speed">Speed</h2>
+        <ul class="bullet">
+          <li></li>
+          <li><em>Watchable</em> unit tests</li>
+          <li>Smoke test suites</li>
+          <li>Quick feedback</li>
+        </ul>
+        <aside>
+          <ul>
+            <li>Tests need to be fast</li>
+            <li>So people can get local confidence, and fast feedback from success or failure remotely</li>
+            <li>Makes pushing easier, reduces context switching</li>
+            <li></li>
+            <li>Unit tests should be of a watchable length. Order of seconds</li>
+            <li>If they're not, then I'm not going to run them very often, and that worsens my feedback loop</li>
+            <li>Think about syntax errors; if they took 5 minutes too arrive, how much slower would you be?</li>
+            <li></li>
+            <li>Integration and system test suites are going to be slower</li>
+            <li>Fight it anyway</li>
+            <li>Smoke tests can make help: predefined suites of a few quick tests</li>
+            <li>That cover most of the functionality at a basic level</li>
+            <li>One test per page, say</li>
+            <li>Rapid local feedback of obvious mistakes</li>
+            <li>Most test runner have some kind of tagging/categorization feature</li>
+            <li></li>
+            <li>Fast feedback is the name of the game</li>
+            <li>See teams with builds that run for 4 hours, and then come back and tell you every single test failed</li>
+            <li>That would've been good to know 4 hours ago</li>
+            <li>Automating the smoke test suites as your first build step can help here</li>
+            <li>Successful feedback is good too; lots of small steps, not a single big one, to expose success en route and give more confidence</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="simplicity">
+        <h2 class="simplicity">Simplicity</h2>
+        <ul class="bullet">
+          <li></li>
+          <li>One click</li>
+          <li>Zero setup</li>
+          <li>Easy debugging</li>
+        </ul>
+        <aside>
+          <ul>
+            <li>Simple builds are easier to have confidence in</li>
+            <li>Easy to understand what it does, and thus to trust it</li>
+            <li>Easy to manage yourself, to check what the build is going to do</li>
+            <li></li>
+            <li>Run with one click/command</li>
+            <li>Very important when you have new people joining the team. Otherwise they'll do it wrong</li>
+            <li>Even with lots of people: I don't run builds where I have to run 10 different things</li>
+            <li>I pick the 'important' ones, and then I'm wrong, and the others break</li>
+            <li>Single click makes it really really easy for people to do, so they do it</li>
+            <li>Back to usability again: remove barriers to good behaviour</li>
+            <li></li>
+            <li>Zero setup</li>
+            <li>If you have setup, you have to remember it</li>
+            <li>When you try and do it, you'll do it wrong</li>
+            <li>Slightly different local environments are a recipe for absolutely zero confidence in the build</li>
+            <li>Again, vagrant/docker and ansible/puppet/chef/all of devops can help</li>
+            <li></li>
+            <li>This needs to be easily debuggable locally.</li>
+            <li>If it's not, when it breaks it's easier to fix the 'obvious' bug, push again and see than to really solve the problem.</li>
+            <li>Guide your users to the right choice</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="conclusion">
+        <h3 class="smell">Nervous pushes</h3>
+        <h2>TESTED</h2>
+        <h2>QUICK</h2>
+        <h2>CONFIDENT</h2>
+        <h2>PUSHES</h2>
+        <aside>
+          <ul>
+            <li>Two down</li>
+            <li>If at any point you're about to push some code or run a build and you're nervous, something is wrong</li>
+            <li>Lots of different techniques in here</li>
+            <li>Chase accuracy to ensure your working code reliably passes</li>
+            <li>Be thorough, so your build never passes code that's actually broken</li>
+            <li>Make it quick, so it's easy to get feedback on changes</li>
+            <li>Keep it simple, to make you and your team use it</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="pink" class="smell">
+        <h2>RARE RELEASES</h2>
+        <aside>
+          <ul>
+            <li>Releases are scary</li>
+            <li>They're the bit where everything can go wrong</li>
+            <li>Releasing is the most important thing you do</li>
+            <li>If you've got working code you're not giving to customers, you're wasting business value</li>
+            <li>Money/growth/customer happiness</li>
+            <li>Not shipping frequently, daily or more, certainly weekly, smells</li>
+            <li>May be business constraints too, but ensure tech is pushing the business, not business chasing tech</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="liftoff" class="releasing-is-value">
+        <h2>Releasing<br/>creates<br/>value</h2>
+        <aside>
+          <ul>
+            <li>Releases are where the rubber hits the road</li>
+            <li>Where your customers actually get the thing they hopefully want</li>
+            <li>Released code that solves their problem is exactly what 100% of your customers want</li>
+            <li>Unreleased code does absolutely nothing for your customers</li>
+            <li>The point where you release something is the one and only point where you do something useful </li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="liftoff" class="release-sooner">
+        <h2>Releasing<br><strong>SOONER</strong><br>creates<br><strong>more</strong><br>value</h2>
+        <aside>
+          <ul>
+            <li>All else being equal</li>
+            <li>Releasing sooner is better</li>
+            <li>Not just because your customers get to be happy sooner</li>
+            <li>Or start paying more you sooner</li>
+            <li>Also because you get more information sooner</li>
+            <li>Better feedback on what you should do next</li>
+            <li>More info on problems; basic functionality issues or high-level usability problems</li>
+            <li>This has been getting a lot of momentum as continuous deployment/delivery</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="facebook"><img src="static/facebook.png">
+        <h2><strong>2</strong><br>releases per day</h2>
+        <aside>
+          <ul>
+            <li>Facebook, for example</li>
+            <li>One of the most visited sites in the world</li>
+            <li>Obviously very high-profile if it goes down</li>
+            <li>They update it twice, every day</li>
+            <li>Wants to do more, but cautious about privacy risk</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="github"><img src="static/github.png">
+        <h2><strong>100<small>s</small></strong><br>releases per week</h2>
+        <aside>
+          <ul>
+            <li>Github has fewer risks, so goes way further: 100s a week</li>
+            <li>Again, big and high profile</li>
+            <li>They talk a lot about it, and the speed and power it gives them</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="netflix"><img src="static/netflix.png">
+        <h2><strong>100<small>s</small></strong><br>releases per day</h2>
+        <aside>
+          <ul>
+            <li>Netflix goes even further: 100s a day</li>
+            <li>Huge, enormous, and famous for their reliability and uptime</li>
+            <li>Netflix has ### UPTIME?</li>
+            <li>Microservices though, maybe that doesn't count?</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="etsy"><img src="static/etsy.png">
+        <h2><strong>50</strong><br>releases per day</h2>
+        <aside>
+          <ul>
+            <li>Etsy: online marketplace</li>
+            <li>Large monolithic PHP app</li>
+            <li>Shipped 50 times a day</li>
+            <li>All four of these are huge engineering teams solving harder problems than yours</li>
+            <li>Their releases are vastly more complicated than yours</li>
+            <li>If they can do it, so can you</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Why not?</h2>
+        <aside>
+          <ul>
+            <li>Given all this, why does anybody not release all the time?</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="half-half" class="half-half">
+        <div class="left">
+          <h2>RISKY</h2>
+        </div>
+        <div class="right">
+          <h2>HARD</h2>
+        </div>
+        <aside>
+          <ul>
+            <li>It's risky - might break something!</li>
+            <li>It's hard - takes effort and time</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="lower-risk">
+        <h2>Reduce the risk</h2>
+        <ul class="bullet">
+          <li></li>
+          <li>Consistent environments</li>
+          <li>Automate <em>everything</em></li>
+          <li>Measure <em>everything</em></li>
+        </ul>
+        <aside>
+          <ul>
+            <li>Kill the risk</li>
+            <li></li>
+            <li>Ensure your environments are the same everywhere</li>
+            <li>Like we talked about for accurate tests earlier: consistency gives confidence</li>
+            <li></li>
+            <li>Automate the hell out of this to make it happen</li>
+            <li>Very few excuses for this: any deployment steps easy enough to do manually should be very easy to do automatically</li>
+            <li>Disproportionate benefit to this kind of stuff</li>
+            <li>Not only your time, but improve overall quality, makes other pain more obvious</li>
+            <li>Quicker more-automated deployments are easier to do more often</li>
+            <li>So releases improve more quickly, and so does the process itself</li>
+            <li>Tighten the feedback loop</li>
+            <li></li>
+            <li>Measure everything</li>
+            <li>All four of the companies measured talk constantly about the different metrics they track</li>
+            <li>Message tends to be: publicize graphs of important stats, have everybody know them</li>
+            <li>Ensure people react when they see them deviating</li>
+            <li>Things like A/B testing and progressive rollout makes this easier, but isn't necessary</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="make-it-easy">
+        <h2>Make it easy</h2>
+        <ul class="bullet">
+          <li></li>
+          <li>Automate <em>everything</em></li>
+          <li>One click (or fewer)</li>
+          <li>Everyone deploys</li>
+        </ul>
+        <aside>
+          <ul>
+            <li>Make it easy</li>
+            <li></li>
+            <li>Again, automation automation automation.</li>
+            <li>There's theme here</li>
+            <li>People don't like putting in brainless effort, and they aren't good at it</li>
+            <li>Computers do, and are. Delegate</li>
+            <li></li>
+            <li>One click deployments: once everything is automated this is very easy to do</li>
+            <li>The only argument against is people might accidentally deploy</li>
+            <li>If you've got a build that won't set up broken code, and you trust your build, that's not a problem</li>
+            <li>Again, usability; if you want people to deploy lots, make deploying trivial</li>
+            <li>Design your build to guide people toward good behaviour</li>
+            <li></li>
+            <li>Have everybody do it, no special priviledges</li>
+            <li>Github for example, everybody does a deploy on their first day</li>
+            <li>Lots of downsides to only one person knowing how to deploy</li>
+            <li>Bus factor</li>
+            <li>Biggest is that it makes deployment process one person's responsibility</li>
+            <li>Time they spend improving it is selfish</li>
+            <li>Deploying is the only point where your team adds value</li>
+            <li>Everybody should be invested in that</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="if-it-hurts">
+        <blockquote>
+          <p>If it hurts, do it more frequently</p>
+          <cite>Jez Humble</cite>
+        </blockquote>
+        <ul class="bullet">
+          <li></li>
+          <li>Deploy every commit</li>
+          <li>Dev environments first</li>
+          <li>Nightly deploys</li>
+        </ul>
+        <aside>
+          <ul>
+            <li>Great quote from Jez Humble, author of Continuous Delivery ### FULL NAME?</li>
+            <li>Applies to lots of this talk, but particularly deployment here</li>
+            <li>If you rarely do deployments, they're huge and painful and scary</li>
+            <li>So they break things</li>
+            <li>So you deploy less.</li>
+            <li>You have to break the loop</li>
+            <li></li>
+            <li>Automatically deploy every commit</li>
+            <li>Not necessarily successfully at first</li>
+            <li>But immediately gives you a very tight feedback loop</li>
+            <li>Highlights issues immediately, check improvements help immediately</li>
+            <li></li>
+            <li>This is scary, so start with just development environments</li>
+            <li>Low risk, easy to experiment</li>
+            <li>Do need to value their quality though, treat them like production envs</li>
+            <li></li>
+            <li>Nightly deploys help too</li>
+            <li>Easy for builds to rot</li>
+            <li>Running the pipeline every day stops this</li>
+            <li>Even if not rotting, it adds extra frequency</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="conclusion">
+        <h3 class="smell">Rare releases</h3>
+        <h2>EASY</h2>
+        <h2>LOW-RISK</h2>
+        <h2>FREQUENT</h2>
+        <h2>RELEASES</h2>
+        <aside>
+          <ul>
+            <li>So, releasing is good</li>
+            <li>Releasing early, and frequently, is better</li>
+            <li>The main thing to is to focus on automation, both for ease and reliability </li>
+            <li>Then push for frequency, and lots of this falls out nicely</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="pink" class="smell">
+        <h2>NOT IMPROVING</h2>
+        <aside>
+          <ul>
+            <li>The last smell then: not improving.</li>
+            <li>Your build will never be perfect</li>
+            <li>But there are always new challenges, and things that don't quite work</li>
+            <li>Very easy to get into a position where you're clearly not dealing with these</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="broken" class="normal">
+        <h2>
+          <q>It's always been<br>like that</q>
+        </h2>
+        <aside>
+          <ul>
+            <li>It's always been like that.</li>
+            <li>Things are bad, and that's normal</li>
+            <li>As soon as you hear this, you know something's wrong somewhere</li>
+            <li>This isn't a good reason to justify anything</li>
+            <li>But i've heard it all the time - it's just broken, that's how it is</li>
+            <li>It's human nature</li>
+            <li>But it doesn't just mean one thing doesn't get fixed</li>
+            <li>Having some things not working makes it easier to ignore other broken things</li>
+            <li>You add more workarounds</li>
+            <li>And then workarounds for the workarounds...</li>
+            <li>You have to nip this in the bud early</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="garden" class="gardening">
+        <h2>Gardening<br>not architecture</h2>
+        <aside>
+          <ul>
+            <li>I want to be clear that I'm not proposing chasing perfection</li>
+            <li>Software development is gardening not architecture</li>
+            <li>You're trying to prune and weed things, not design a perfect glorious monument</li>
+            <li>Your customer does not give a damn about your tech stack. Moving to Haskell is probably a mistake</li>
+            <li>Don't get hung up on shiny new toys and chasing architectural beauty</li>
+            <li>But it is extremely important to deal with actual concrete problems</li>
+            <li>Anything that's genuinely slowing down you or your team</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="why-not-improving">
+        <h2 class="momentum">No momentum</h2>
+        <h2 class="difficulty">Hard to change</h2>
+        <h2 class="not-my-problem">Not my problem</h2>
+        <aside>
+          <ul>
+            <li>There's a few big reasons why this happens</li>
+            <li>No momentum</li>
+            <li>Hard to change</li>
+            <li>Not my problem</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="momentum">
+        <h2 class="momentum">No momentum</h2>
+        <aside>
+          <ul>
+            <li>If the build has been a mess for a while, it's hard to start fixing it</li>
+            <li>This is the hardest problem here really: motivating people from a standing start</li>
+            <li>I don't have any magic answers I'm afraid. My best suggestion is...</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="jump-start" class="jump-start">
+        <h2>Jump start it</h2>
+        <h3>(One area at a time)</h3>
+        <aside>
+          <ul>
+            <li>Dive in full force.</li>
+            <li>Incremental improvements don't happen - they die</li>
+            <li>Improving everything at once doesn't work well either</li>
+            <li>Everything gets a little better, which is good, but you don't get the follow-on: it's still bad</li>
+            <li>The cases where I've seen this well, there's been a reasonable amount of focus</li>
+            <li>Not necessarily one area at a time, but one area mainly</li>
+            <li>Once you've drastically a whole area it becomes very obvious if it slips, and easier to motivate yourself to fix it</li>
+            <li>Beyond that it's a game of persuation and motivation</li>
+            <li>These are hard topics, but I've seen it done</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="hard-to-change">
+        <h2 class="difficulty">Hard to change</h2>
+        <aside>
+          <ul>
+            <li>More interesting is difficulty</li>
+            <li>People complain that the build process is big and complicated and difficult to fix</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Keep it simple</h2>
+        <aside>
+          <ul>
+            <li>To make it easy, I'd suggest chasing simplicity</li>
+            <li>Simple tools, easily manageable</li>
+            <li>Try to have your build scripted in a language everybody uses often (not XML)</li>
+            <li>Try to have config easily accessible and testable: config in Grunt or Rake or Gradle is better than sprinkled across text boxes on Jenkins</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Get everybody involved</h2>
+        <aside>
+          <ul>
+            <li>It's easy to end up with one person knowing how the build works, and nobody else</li>
+            <li>That's really bad</li>
+            <li>Team responsibility is the name of the game here</li>
+            <li>If people want something changed or fixed, pair with them</li>
+            <li>Share the knowledge, so it's easy for everybody to easily make changes themselves</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Experiment<br>explicitly</h2>
+        <aside>
+          <ul>
+            <li>Finally, one of the main reasons builds become hard to manage is because they do too much</li>
+            <li>People add the next shiny toy for a million new shiny features</li>
+            <li>But they don't finish it off, and they rot</li>
+            <li>And you end up with a million jobs, none of which work well, and none of which anybody understands</li>
+            <li>Experimenting is the best way to get a good result</li>
+            <li>But at the end of an experiment, either commit to it and implement it thoroughly</li>
+            <li>Or drop it and pull it out entirely</li>
+            <li>Half-implemented features are the worst features of all: lots of extra complexity, very little benefit</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2 class="not-my-problem">Not my problem</h2>
+        <aside>
+          <ul>
+            <li>Last then: how do you get people to take responsibility for the build?</li>
+            <li>You do *have* to do this</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="cant-fix">
+        <h2>You can't<br>fix everything</h2>
+        <aside>
+          <ul>
+            <li>For starters, you can't fix everything</li>
+            <li>You're trying to build a great product, and you're already pretty busy</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="cant-fix">
+        <h2>You alone can't<br>fix anything</h2>
+        <aside>
+          <ul>
+            <li>It's even worse than that though</li>
+            <li>Even if you could fix everything, doing it alone is useless</li>
+            <li>Touched on this a minute ago, worth repeating</li>
+            <li>If you fix something, and the team is not invested in it too, it'll rot and die</li>
+            <li>Something will break, and they won't fix it</li>
+            <li>A new challenge will come up, and somebody will hack something in to solve it</li>
+            <li>You have to all work together, and be committed to making your processes work well for everybody</li>
+            <li>How?</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Retro often</h2>
+        <aside>
+          <ul>
+            <li>Retros retros retros</li>
+            <li>People care about their own ideas</li>
+            <li>Nobody should be issuing diktats about what needs fixing</li>
+            <li>Ask people what's hurting</li>
+            <li>All agree what a better world would look like</li>
+            <li>Come up with concrete things that will take you that direction</li>
+            <li>Frequently - weekly works well</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Blame the build</h2>
+        <h3>And fix it together</h3>
+        <aside>
+          <ul>
+            <li>Blame culture will kill this immediately though</li>
+            <li>People will stop being honest in retros, and will start covering themselves instead of working together</li>
+            <li>Don't allow that: focus on the team tools and processes</li>
+            <li>If somebody makes a mistake, what allowed them to make a mistake</li>
+            <li>Everybody on the team is trying to do their best; what's wrong with your system that leads them from that to mistakes?</li>
+            <li>How could the build work better to stop these mistakes in future, and guide people right?</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Measure success</h2>
+        <aside>
+          <ul>
+            <li>Your retros should come up with actions</li>
+            <li>Measure whether they happen</li>
+            <li>Track the number of actions that happen by the next retro</li>
+            <li>Keep visible chains since the last problem, for things you're trying to fix</li>
+            <li>Days since last spurious build failure</li>
+            <li>Graph stats: releases per day.</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Stay focused</h2>
+        <aside>
+          <ul>
+            <li>All of this is driving towards making retro actions actually happen</li>
+            <li>Relatively easy to discuss things and not achieve anything</li>
+            <li>Especially for actions everybody needs to do "remember to share your changes early"</li>
+            <li>Reminders in chat rooms</li>
+            <li>This, and retros generally, only work if you're only fixing a few things at a time</li>
+            <li>Don't bite off too much at once.</li>
+            <li>Again, one area at time.</li>
+          </ul>
+        </aside>
+      </section>
+      <section class="conclusion improving">
+        <h3 class="smell">Not improving</h3>
+        <h2>IMPROVING</h2>
+        <h2>AS A TEAM</h2>
+        <h2>OFTEN</h2>
+        <h2>WITH FOCUS</h2>
+        <aside>
+          <ul>
+            <li>Last one then: how do we make sure we keep getting better?</li>
+            <li>Focus on one main area at a time</li>
+            <li>Build a sense of team responsibility and avoid blame</li>
+            <li>Repeatedly discuss what needs fixing, and measure how it's going</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="white" class="usability">
+        <div style="text-align: left">
+          <h3>It's about</h3>
+          <h2>USABILITY</h2>
+        </div>
+        <aside>
+          <ul>
+            <li>Wrapping up then: it's all about usability</li>
+            <li>Put half as much thought into the design of your build as you do into your products, you'll get huge benefits to both</li>
+            <li>Watch out for developer pain</li>
+            <li>Smells and issues like the ones we've seen here are useful feedback, don't ignore them</li>
+            <li>Use them to focus your efforts on practical benefits, and make your whole team better</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="cumulative" class="cumulative">
+        <h2>Improvements</h2>
+        <h3>are</h3>
+        <h2 class="cumulative">CUMULATIVE</h2>
+        <aside>
+          <ul>
+            <li>It's been a repeated theme throughout</li>
+            <li>but it's worth nothing again that a huge number of these compound nicely together</li>
+            <li>Removing friction both speeds up development, and makes it easier to remove more friction</li>
+            <li>Quicker releases both get value out the door faster, but also make it easier to do quicker releases</li>
+            <li>It's easy to undervalue this stuff by only looking at the immediate single time improvement</li>
+            <li>The extra time you make in removing friction to keep people in their flow, to build a culture where broken things are obviously bad, and bring the team together around really good development are well worth it</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="white" class="smells">
+        <h2>PAINFUL MERGES</h2>
+        <h2>NERVOUS PUSHES</h2>
+        <h2>RARE RELEASES</h2>
+        <h2>NOT IMPROVING</h2>
+        <aside>
+          <ul>
+            <li>One last recap</li>
+            <li></li>
+            <li>You should not be spending loads of your time fighting merges, or racing to push ahead of each other</li>
+            <li>Share early, share often, use feature flags and avoid branching without a reason</li>
+            <li></li>
+            <li>If pushing is scary, if you're rerunning builds, something is badly wrong, and you should fix it</li>
+            <li>Confidence comes from accurate, through, fast, easy builds</li>
+            <li>No tolerance for failures, keep an eye on coverage, use smoke tests for quick feedback, and aim for one click setup and go locally</li>
+            <li></li>
+            <li>Releases should be frequent. Earlier releases add earlier and greater value.</li>
+            <li>Automated everything, measure everything, and aim to deploy every commit</li>
+            <li></li>
+            <li>All of this should be improving, and you shouldn't be settling for broken systems</li>
+            <li>Focus on the main thing that needs fixing, build a culture of team responsibility for the build, and measure and talk about what's working and what's not</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-bespoke-state="roses" class="title">
+        <h1>Your Build Smells</h1>
+        <address class="vcard"><a href="http://twitter.com/pimterry" rel="me" class="nickname url">@pimterry</a>
+          <div class="org vcard"><a href="http://softwire.com" rel="group" class="org fn url">Softw<span class="i">i</span>re</a></div>
+        </address>
+        <aside>
+          <ul>
+            <li>That's the lot</li>
+            <li>I'm Tim Perry - pimterry on twitter - slides up later</li>
+            <li>Again, I do work for Softwire, we do have an office right here in Bristol</li>
+            <li>Come talk to me later if you'd like to come work for us, or if you'd like us to come work for you</li>
+            <li>Thank you</li>
+          </ul>
+        </aside>
+      </section>
+    </article>
+    <script src="build/build.js"></script><link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+  </body>
+</html>
