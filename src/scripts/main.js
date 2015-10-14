@@ -6,7 +6,8 @@ var bespoke = require('bespoke'),
   bullets = require('bespoke-bullets'),
   state = require('bespoke-state'),
   scale = require('bespoke-scale'),
-  hash = require('bespoke-hash');
+  hash = require('bespoke-hash'),
+  notes = require('./bespoke-notes');
 
 // Bespoke.js
 bespoke.from('article', [
@@ -16,7 +17,8 @@ bespoke.from('article', [
   bullets('ul.bullet li'),
   state(),
   scale(),
-  hash()
+  hash(),
+  notes()
 ]);
 
 // Prism syntax highlighting
