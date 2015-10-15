@@ -25,13 +25,11 @@
       <section class="softwire"><img src="static/softwire-logo.png" style="width: 60%">
         <aside>
           <ul>
-            <li>Context first</li>
             <li>We build software for everybody else</li>
             <li>Offices in London and Bristol</li>
-            <li>We see a lot of different projects, with a huge range of practices and levels of quality</li>
-            <li>I want to look at some notable issues where things work particularly badly</li>
-            <li>And look at effective ways we've found to make them work better</li>
-            <li>Should note: we're always hiring, and we are available for hire</li>
+            <li>Lots of different projects, with a huge range of practices and levels of quality</li>
+            <li>We see things working badly, and have to find ways to improve them</li>
+            <li>We're always hiring, and we are available for hire</li>
           </ul>
         </aside>
       </section>
@@ -39,11 +37,10 @@
         <h2>Your build</h2>
         <aside>
           <ul>
-            <li>I'm here to talk about builds</li>
-            <li>Specifically, I'm talking about the tools and processes you use to manage development within a team</li>
-            <li>Both automated processes here and manual steps</li>
-            <li>The people who'll get most out of this really are technical leads, and people aiming that way</li>
-            <li>It's stuff everybody who uses this needs to care about though</li>
+            <li>Builds</li>
+            <li>= tools + processes</li>
+            <li>How you take fresh code from your team, put it all togother, check it works, and release it to customers</li>
+            <li>Automated and manual</li>
           </ul>
         </aside>
       </section>
@@ -52,58 +49,33 @@
         <aside>
           <ul>
             <li>Why should we care more about this though?</li>
-            <li>Presumably evereybody here is getting software into customer's hands already</li>
-            <li>Or has a good plan to</li>
             <li></li>
-            <li>Our builds are the pipeline that take the code we write, and eventually make it useful in a customer's hands</li>
-            <li>Without that, you're nothing</li>
-            <li>With that, you're actually creating value.</li>
-            <li>The bit where customers get something is the point where software development gets useful</li>
-            <li>Your build is the tool you use to actually add value to the world</li>
+            <li>The pipeline that takes your code and makes it useful</li>
+            <li>Without, you're nothing. With, you add value.</li>
             <li></li>
-            <li>We see a lot of teams where their builds slow them down and get in the way</li>
-            <li>Where they implement lots of processes aimed at avoiding mistakes, rather than driving success</li>
-            <li>Or lots of shiny fun tools that are fun to set up but aren't very useful</li>
-            <li>This costs a lot of time and money and happiness</li>
+            <li>Important process, can make a big difference</li>
+            <li>See lots of teams where their builds are obstacles</li>
+            <li>Processes aimed at avoiding mistakes, rather than driving success</li>
+            <li>Shiny fun tools that are fun to set up that aren't very useful</li>
+            <li>Costs a lot of time and money and happiness</li>
+            <li></li>
             <li>If we can improve this, we can deliver better software, faster, with less pain along the way</li>
-          </ul>
-        </aside>
-      </section>
-      <section data-bespoke-state="white" class="usability">
-        <div style="text-align: left">
-          <h3>It's about</h3>
-          <h2>USABILITY</h2>
-        </div>
-        <aside>
-          <ul>
-            <li>There's an interesting point that runs through this, about usability</li>
-            <li>Your build is essentially a product</li>
-            <li>You and your team are the users</li>
-            <li>You're using the product with a goal in mind: you want to ship useful products to your customers</li>
-            <li>We can apply lots of usability ideas to all of this</li>
-            <li>What are the obstacles getting in the way of our users?</li>
-            <li>How can we make it easier for users to do the sensible thing?</li>
-            <li>How can we guide them to understanding and using the software more easily?</li>
-            <li>How can we get the build out of the way, so our users can get on with doing what's important?</li>
             <li></li>
-            <li>Fortunately, you have an advantage, because you are your own most important users</li>
-            <li>You can get the kind of user feedback UX designers can only dream of</li>
+            <li>How do we make it better?</li>
           </ul>
         </aside>
       </section>
-      <section data-bespoke-state="white" class="pain-is-feedback">
-        <h2>Developer pain</h2>
-        <h3>is</h3>
-        <h2>User feedback</h2>
+      <section data-bespoke-state="garden" class="gardening">
+        <h2><strong>Gardening</strong><br>Not architecture</h2>
         <aside>
           <ul>
-            <li>It's important to use this, and that's where this talk comes in</li>
-            <li>You and your team know how well your build works for what you want from it</li>
-            <li>You've got a good idea what could be better already</li>
-            <li>You need to listen to this feedback, and use it to help you improve</li>
-            <li>That's what we're going to do</li>
-            <li>We're going to look at some developer pain, some build smells, if you will</li>
-            <li>and try and see how we can use it to improve our builds</li>
+            <li>I want to be clear that I'm not proposing chasing perfection</li>
+            <li>Software development is gardening not architecture</li>
+            <li>You're trying to prune and weed things, not design a perfect glorious monument</li>
+            <li>Your customer does not give a damn about your tech stack. Moving to Haskell is probably a mistake</li>
+            <li>Don't get hung up on shiny new toys and chasing architectural beauty</li>
+            <li>But it is extremely important to deal with actual concrete problems</li>
+            <li>Anything that's genuinely slowing down you or your team</li>
           </ul>
         </aside>
       </section>
@@ -257,12 +229,10 @@
         <h2>MERGES</h2>
         <aside>
           <ul>
-            <li>First one down</li>
-            <li>If you ever find yourself fighting merging</li>
-            <li>Racing to push, keeping things on branches, throwing time at conflicts</li>
-            <li>Break it down</li>
-            <li>Push earlier</li>
-            <li>Push smaller</li>
+            <li>Big painful merges to:</li>
+            <li>Smaller merges</li>
+            <li>Done more frequently</li>
+            <li>Hopefully making them all easy</li>
           </ul>
         </aside>
       </section>
@@ -336,7 +306,7 @@
       </section>
       <section class="accuracy">
         <h2 class="accuracy">Accuracy</h2>
-        <ul class="bullet">
+        <ul>
           <li></li>
           <li>No dependencies</li>
           <li>Identical environments</li>
@@ -369,7 +339,7 @@
       </section>
       <section class="thoroughness">
         <h2 class="thoroughness">Thoroughness</h2>
-        <ul class="bullet">
+        <ul>
           <li></li>
           <li>Monitor coverage <small>(a bit)</small></li>
           <li>Cover every risk <em>somewhere</em></li>
@@ -400,11 +370,11 @@
       </section>
       <section class="speed">
         <h2 class="speed">Speed</h2>
-        <ul class="bullet">
+        <ul>
           <li></li>
+          <li>Quick feedback</li>
           <li><em>Watchable</em> unit tests</li>
           <li>Smoke test suites</li>
-          <li>Quick feedback</li>
         </ul>
         <aside>
           <ul>
@@ -434,7 +404,7 @@
       </section>
       <section class="simplicity">
         <h2 class="simplicity">Simplicity</h2>
-        <ul class="bullet">
+        <ul>
           <li></li>
           <li>One click</li>
           <li>Zero setup</li>
@@ -473,13 +443,10 @@
         <h2>PUSHES</h2>
         <aside>
           <ul>
-            <li>Two down</li>
-            <li>If at any point you're about to push some code or run a build and you're nervous, something is wrong</li>
-            <li>Lots of different techniques in here</li>
-            <li>Chase accuracy to ensure your working code reliably passes</li>
-            <li>Be thorough, so your build never passes code that's actually broken</li>
-            <li>Make it quick, so it's easy to get feedback on changes</li>
-            <li>Keep it simple, to make you and your team use it</li>
+            <li>Moving from nervous pushing and uncertainty to:</li>
+            <li>Accurate and thoroughly tested pushes</li>
+            <li>With quick feedback</li>
+            <li>Giving us confidence in our changes, so we can go fast</li>
           </ul>
         </aside>
       </section>
@@ -554,19 +521,6 @@
             <li>Huge, enormous, and famous for their reliability and uptime</li>
             <li>Netflix has ### UPTIME?</li>
             <li>Microservices though, maybe that doesn't count?</li>
-          </ul>
-        </aside>
-      </section>
-      <section class="etsy"><img src="static/etsy.png">
-        <h2><strong>50</strong><br>releases per day</h2>
-        <aside>
-          <ul>
-            <li>Etsy: online marketplace</li>
-            <li>Large monolithic PHP app</li>
-            <li>Shipped 50 times a day</li>
-            <li>All four of these are huge engineering teams solving harder problems than yours</li>
-            <li>Their releases are vastly more complicated than yours</li>
-            <li>If they can do it, so can you</li>
           </ul>
         </aside>
       </section>
@@ -665,8 +619,7 @@
         <ul class="bullet">
           <li></li>
           <li>Deploy every commit</li>
-          <li>Dev environments first</li>
-          <li>Nightly deploys</li>
+          <li>Deploy every night</li>
         </ul>
         <aside>
           <ul>
@@ -690,6 +643,7 @@
             <li>Easy for builds to rot</li>
             <li>Running the pipeline every day stops this</li>
             <li>Even if not rotting, it adds extra frequency</li>
+            <li>Known good build, should always pass</li>
           </ul>
         </aside>
       </section>
@@ -701,10 +655,10 @@
         <h2>RELEASES</h2>
         <aside>
           <ul>
-            <li>So, releasing is good</li>
-            <li>Releasing early, and frequently, is better</li>
-            <li>The main thing to is to focus on automation, both for ease and reliability </li>
-            <li>Then push for frequency, and lots of this falls out nicely</li>
+            <li>Rare occasional uncomfortable releases to:</li>
+            <li>Easier</li>
+            <li>Low-risk</li>
+            <li>Frequent</li>
           </ul>
         </aside>
       </section>
@@ -736,20 +690,6 @@
             <li>You add more workarounds</li>
             <li>And then workarounds for the workarounds...</li>
             <li>You have to nip this in the bud early</li>
-          </ul>
-        </aside>
-      </section>
-      <section data-bespoke-state="garden" class="gardening">
-        <h2>Gardening<br>not architecture</h2>
-        <aside>
-          <ul>
-            <li>I want to be clear that I'm not proposing chasing perfection</li>
-            <li>Software development is gardening not architecture</li>
-            <li>You're trying to prune and weed things, not design a perfect glorious monument</li>
-            <li>Your customer does not give a damn about your tech stack. Moving to Haskell is probably a mistake</li>
-            <li>Don't get hung up on shiny new toys and chasing architectural beauty</li>
-            <li>But it is extremely important to deal with actual concrete problems</li>
-            <li>Anything that's genuinely slowing down you or your team</li>
           </ul>
         </aside>
       </section>
@@ -849,30 +789,6 @@
           </ul>
         </aside>
       </section>
-      <section class="cant-fix">
-        <h2>You can't<br>fix everything</h2>
-        <aside>
-          <ul>
-            <li>For starters, you can't fix everything</li>
-            <li>You're trying to build a great product, and you're already pretty busy</li>
-          </ul>
-        </aside>
-      </section>
-      <section class="cant-fix">
-        <h2>You alone can't<br>fix anything</h2>
-        <aside>
-          <ul>
-            <li>It's even worse than that though</li>
-            <li>Even if you could fix everything, doing it alone is useless</li>
-            <li>Touched on this a minute ago, worth repeating</li>
-            <li>If you fix something, and the team is not invested in it too, it'll rot and die</li>
-            <li>Something will break, and they won't fix it</li>
-            <li>A new challenge will come up, and somebody will hack something in to solve it</li>
-            <li>You have to all work together, and be committed to making your processes work well for everybody</li>
-            <li>How?</li>
-          </ul>
-        </aside>
-      </section>
       <section>
         <h2>Retro often</h2>
         <aside>
@@ -936,25 +852,10 @@
         <h2>WITH FOCUS</h2>
         <aside>
           <ul>
-            <li>Last one then: how do we make sure we keep getting better?</li>
-            <li>Focus on one main area at a time</li>
-            <li>Build a sense of team responsibility and avoid blame</li>
-            <li>Repeatedly discuss what needs fixing, and measure how it's going</li>
-          </ul>
-        </aside>
-      </section>
-      <section data-bespoke-state="white" class="usability">
-        <div style="text-align: left">
-          <h3>It's about</h3>
-          <h2>USABILITY</h2>
-        </div>
-        <aside>
-          <ul>
-            <li>Wrapping up then: it's all about usability</li>
-            <li>Put half as much thought into the design of your build as you do into your products, you'll get huge benefits to both</li>
-            <li>Watch out for developer pain</li>
-            <li>Smells and issues like the ones we've seen here are useful feedback, don't ignore them</li>
-            <li>Use them to focus your efforts on practical benefits, and make your whole team better</li>
+            <li>Not improving and changing to:</li>
+            <li>Team responsibility</li>
+            <li>Weekly retros and discussion of problems</li>
+            <li>Focusing on the biggest problems one at a time</li>
           </ul>
         </aside>
       </section>
@@ -973,27 +874,15 @@
           </ul>
         </aside>
       </section>
-      <section data-bespoke-state="white" class="smells">
-        <h2>PAINFUL MERGES</h2>
-        <h2>NERVOUS PUSHES</h2>
-        <h2>RARE RELEASES</h2>
-        <h2>NOT IMPROVING</h2>
+      <section data-bespoke-state="garden" class="gardening">
+        <h2><strong>Gardening</strong><br>Not architecture</h2>
         <aside>
           <ul>
-            <li>One last recap</li>
-            <li></li>
-            <li>You should not be spending loads of your time fighting merges, or racing to push ahead of each other</li>
-            <li>Share early, share often, use feature flags and avoid branching without a reason</li>
-            <li></li>
-            <li>If pushing is scary, if you're rerunning builds, something is badly wrong, and you should fix it</li>
-            <li>Confidence comes from accurate, through, fast, easy builds</li>
-            <li>No tolerance for failures, keep an eye on coverage, use smoke tests for quick feedback, and aim for one click setup and go locally</li>
-            <li></li>
-            <li>Releases should be frequent. Earlier releases add earlier and greater value.</li>
-            <li>Automated everything, measure everything, and aim to deploy every commit</li>
-            <li></li>
-            <li>All of this should be improving, and you shouldn't be settling for broken systems</li>
-            <li>Focus on the main thing that needs fixing, build a culture of team responsibility for the build, and measure and talk about what's working and what's not</li>
+            <li>Finally, again, we're focusing on weeding and pruning here</li>
+            <li>Your build is a functional tool</li>
+            <li>Not a beautiful toy to play with</li>
+            <li>Take all of this with a grain of salt</li>
+            <li>Above all, focus on what's hurting your team, and what helps</li>
           </ul>
         </aside>
       </section>
