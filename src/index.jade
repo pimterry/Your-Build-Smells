@@ -40,32 +40,31 @@ html
             li Builds
             li = tools + processes
             li How you take fresh code from your team, put it all togother, check it works, and release it to customers
-            li Automated and manual
 
       section(data-bespoke-state="cat").who-cares
         h2 Who cares? 
         aside
           ul
             li Why should we care more about this though?
-            li 
+          ul 
             li The pipeline that takes your code and makes it useful
             li Without, you're nothing. With, you add value.
-            li 
+          ul 
             li Important process, can make a big difference
             li See lots of teams where their builds are obstacles
             li Processes aimed at avoiding mistakes, rather than driving success
             li Shiny fun tools that are fun to set up that aren't very useful
             li Costs a lot of time and money and happiness
-            li
+          ul
             li If we can improve this, we can deliver better software, faster, with less pain along the way
-            li
+          ul
             li How do we make it better?
 
       section(data-bespoke-state="garden").gardening
         h2 
           strong Gardening
           br
-          | Not architecture
+          | not architecture
         aside
           ul
             li I want to be clear that I'm not proposing chasing perfection
@@ -98,13 +97,13 @@ html
             li Many of these conflicts are avoidable
             li Usually syntactic conflicts: two independent changes in the sme code
             li Both adding two fields, but on the same line
-            li
+          ul  
             li Sometimes semantic conflicts: two interacting changes, but easily reconcilable once you know both are required
             li Slightly changing the return type of a method, and using the method elsewhere
-            li
+          ul
             li Rarely fundamental design conflicts: you want to do X, I want conflicting Y, X+Y are mutually exclusive
             li Changing the return type of a method to two drastically different things
-            li
+          ul  
             li Everything but fundamental conflicts is resolvable earlier, potentially invisibly
             li Syntactic and simple semantic conflicts would be unnoticable if we had make the changes in sequence.
 
@@ -221,7 +220,7 @@ html
             li One of the reasons people don't do that is because pushing can be scary
             li Been on teams where build after push usually broke something
             li You pushed, then sat refreshing the build monitor
-            li
+          ul
             li Makes you push less
             li Distracting too: you want to be able to push and move on
 
@@ -286,16 +285,16 @@ html
             li Consistently, and reliably, with no exceptions
             li If working code fails and messes up your flow, you run the build as little as possible
             li And you ignore actually useful failures when they happen
-            li
+          ul
             li Unit tests should need nothing from their environment at all
             li Integration and system level tests might, but try to limit as much as possible.
             li Any external dependencies make your code worse
             li Bundle DBs/servers/service stubs with your codebase, start them in the tests
-            li
+          ul
             li Identical environments - tests should run in identical contexts all the time
             li Vagrant, Docker, etc can help with doing this for dev environment
             li Unit tests should have no dependencies, should be trivial
-            li
+          ul
             li Zero tolerance for failure
             li Occasional failures are poisonous: seems cheap, but undermines quality completely
             li As soon as you have any, you start disconting failures, and being nervous about ok builds
@@ -316,15 +315,15 @@ html
             li Need to be confident, or you can't share your code with others
             li If build isn't thorough, you'll have to be manually thorough
             li You won't be
-            li
+          ul
             li Make coverage visible in your team (monitors), and preferably your tools (NCrunch/Wallaby)
             li Coverage isn't perfect, don't chase arbitrary targets
             li But it is useful information, and overall trends and areas covered is important
-            li
+          ul
             li You don't have to test every case at every level
             li If you have unit tests thoroughly checking certain behaviour, you probably don't need system tests too
             li Instead have system tests that do an overall chcek that it all works, and leave the detail to the unit tests
-            li
+          ul
             li Don't test trivialities
             li If there's no way this test is ever going to fail, don't write it
             li Usually that means, test the same functionality, but further up the stack
@@ -343,24 +342,23 @@ html
             li Tests need to be fast
             li So people can get local confidence, and fast feedback from success or failure remotely
             li Makes pushing easier, reduces context switching
-            li
-            li Unit tests should be of a watchable length. Order of seconds
-            li If they're not, then I'm not going to run them very often, and that worsens my feedback loop
-            li Think about syntax errors; if they took 5 minutes too arrive, how much slower would you be?
-            li
-            li Integration and system test suites are going to be slower
-            li Fight it anyway
-            li Smoke tests can make help: predefined suites of a few quick tests
-            li That cover most of the functionality at a basic level
-            li One test per page, say
-            li Rapid local feedback of obvious mistakes
-            li Most test runner have some kind of tagging/categorization feature
-            li
+          ul
             li Fast feedback is the name of the game
             li See teams with builds that run for 4 hours, and then come back and tell you every single test failed
             li That would've been good to know 4 hours ago
             li Automating the smoke test suites as your first build step can help here
             li Successful feedback is good too; lots of small steps, not a single big one, to expose success en route and give more confidence
+          ul
+            li Unit tests should be of a watchable length. Order of seconds
+            li If they're not, then I'm not going to run them very often, and that worsens my feedback loop
+            li Think about syntax errors; if they took 5 minutes too arrive, how much slower would you be?
+          ul
+            li Integration and system test suites are going to be slower; fight anyway
+            li Smoke tests can make help: predefined suites of a few quick tests
+            li That cover most of the functionality at a basic level
+            li One test per page, say
+            li Rapid local feedback of obvious mistakes
+            li Most test runner have some kind of tagging/categorization feature
 
       section.simplicity
         h2.simplicity Simplicity
@@ -374,20 +372,20 @@ html
             li Simple builds are easier to have confidence in
             li Easy to understand what it does, and thus to trust it
             li Easy to manage yourself, to check what the build is going to do
-            li
+          ul
             li Run with one click/command
             li Very important when you have new people joining the team. Otherwise they'll do it wrong
             li Even with lots of people: I don't run builds where I have to run 10 different things
             li I pick the 'important' ones, and then I'm wrong, and the others break
             li Single click makes it really really easy for people to do, so they do it
             li Back to usability again: remove barriers to good behaviour
-            li
+          ul
             li Zero setup
             li If you have setup, you have to remember it
             li When you try and do it, you'll do it wrong
             li Slightly different local environments are a recipe for absolutely zero confidence in the build
             li Again, vagrant/docker and ansible/puppet/chef/all of devops can help
-            li
+          ul
             li This needs to be easily debuggable locally.
             li If it's not, when it breaks it's easier to fix the 'obvious' bug, push again and see than to really solve the problem.
             li Guide your users to the right choice
@@ -514,10 +512,10 @@ html
         aside
           ul
             li Kill the risk
-            li
+          ul
             li Ensure your environments are the same everywhere
             li Like we talked about for accurate tests earlier: consistency gives confidence
-            li
+          ul
             li Automate the hell out of this to make it happen
             li Very few excuses for this: any deployment steps easy enough to do manually should be very easy to do automatically
             li Disproportionate benefit to this kind of stuff
@@ -525,7 +523,7 @@ html
             li Quicker more-automated deployments are easier to do more often
             li So releases improve more quickly, and so does the process itself
             li Tighten the feedback loop
-            li
+          ul
             li Measure everything
             li All four of the companies measured talk constantly about the different metrics they track
             li Message tends to be: publicize graphs of important stats, have everybody know them
@@ -542,18 +540,18 @@ html
         aside
           ul
             li Make it easy
-            li
+          ul
             li Again, automation automation automation.
             li There's theme here
             li People don't like putting in brainless effort, and they aren't good at it
             li Computers do, and are. Delegate
-            li
+          ul
             li One click deployments: once everything is automated this is very easy to do
             li The only argument against is people might accidentally deploy
             li If you've got a build that won't set up broken code, and you trust your build, that's not a problem
             li Again, usability; if you want people to deploy lots, make deploying trivial
             li Design your build to guide people toward good behaviour
-            li
+          ul
             li Have everybody do it, no special priviledges
             li Github for example, everybody does a deploy on their first day
             li Lots of downsides to only one person knowing how to deploy
@@ -579,16 +577,16 @@ html
             li So they break things
             li So you deploy less.
             li You have to break the loop
-            li
+          ul
             li Automatically deploy every commit
             li Not necessarily successfully at first
             li But immediately gives you a very tight feedback loop
             li Highlights issues immediately, check improvements help immediately
-            li
+          ul
             li This is scary, so start with just development environments
             li Low risk, easy to experiment
             li Do need to value their quality though, treat them like production envs
-            li
+          ul
             li Nightly deploys help too
             li Easy for builds to rot
             li Running the pipeline every day stops this
@@ -608,179 +606,6 @@ html
             li Low-risk
             li Frequent
 
-      section(data-bespoke-state="pink").smell
-        h2 NOT IMPROVING
-        aside
-          ul
-            li The last smell then: not improving.
-            li Your build will never be perfect
-            li But there are always new challenges, and things that don't quite work
-            li Very easy to get into a position where you're clearly not dealing with these
-
-      section(data-bespoke-state="broken").normal
-        h2
-          q 
-            | It's always been
-            br
-            | like that
-        aside
-          ul
-            li It's always been like that.
-            li Things are bad, and that's normal
-            li As soon as you hear this, you know something's wrong somewhere
-            li This isn't a good reason to justify anything
-            li But i've heard it all the time - it's just broken, that's how it is
-            li It's human nature
-            li But it doesn't just mean one thing doesn't get fixed
-            li Having some things not working makes it easier to ignore other broken things
-            li You add more workarounds
-            li And then workarounds for the workarounds...
-            li You have to nip this in the bud early
-
-      section.why-not-improving
-        h2.momentum No momentum
-        h2.difficulty Hard to change
-        h2.not-my-problem Not my problem
-        aside
-          ul
-            li There's a few big reasons why this happens
-            li No momentum
-            li Hard to change
-            li Not my problem
-
-      section.momentum
-        h2.momentum No momentum
-        aside
-          ul
-            li If the build has been a mess for a while, it's hard to start fixing it
-            li This is the hardest problem here really: motivating people from a standing start
-            li I don't have any magic answers I'm afraid. My best suggestion is...
-
-      section(data-bespoke-state="jump-start").jump-start
-        h2 Jump start it
-        h3 (One area at a time)
-        aside
-          ul
-            li Dive in full force.
-            li Incremental improvements don't happen - they die
-            li Improving everything at once doesn't work well either
-            li Everything gets a little better, which is good, but you don't get the follow-on: it's still bad
-            li The cases where I've seen this well, there's been a reasonable amount of focus
-            li Not necessarily one area at a time, but one area mainly
-            li Once you've drastically a whole area it becomes very obvious if it slips, and easier to motivate yourself to fix it
-            li Beyond that it's a game of persuation and motivation
-            li These are hard topics, but I've seen it done
-
-      section.hard-to-change
-        h2.difficulty Hard to change
-        aside
-          ul
-            li More interesting is difficulty
-            li People complain that the build process is big and complicated and difficult to fix
-
-      section
-        h2 Keep it simple
-        aside
-          ul
-            li To make it easy, I'd suggest chasing simplicity
-            li Simple tools, easily manageable
-            li Try to have your build scripted in a language everybody uses often (not XML)
-            li Try to have config easily accessible and testable: config in Grunt or Rake or Gradle is better than sprinkled across text boxes on Jenkins
-
-      section
-        h2 Get everybody involved
-        aside
-          ul
-            li It's easy to end up with one person knowing how the build works, and nobody else
-            li That's really bad
-            li Team responsibility is the name of the game here
-            li If people want something changed or fixed, pair with them
-            li Share the knowledge, so it's easy for everybody to easily make changes themselves
-
-      section
-        h2
-          | Experiment
-          br
-          | explicitly
-        aside
-          ul
-            li Finally, one of the main reasons builds become hard to manage is because they do too much
-            li People add the next shiny toy for a million new shiny features
-            li But they don't finish it off, and they rot
-            li And you end up with a million jobs, none of which work well, and none of which anybody understands
-            li Experimenting is the best way to get a good result
-            li But at the end of an experiment, either commit to it and implement it thoroughly
-            li Or drop it and pull it out entirely
-            li Half-implemented features are the worst features of all: lots of extra complexity, very little benefit
-
-      section
-        h2.not-my-problem Not my problem
-        aside
-          ul
-            li Last then: how do you get people to take responsibility for the build?
-            li You do *have* to do this
-
-      section
-        h2 Retro often
-        aside
-          ul
-            li Retros retros retros
-            li People care about their own ideas
-            li Nobody should be issuing diktats about what needs fixing
-            li Ask people what's hurting
-            li All agree what a better world would look like
-            li Come up with concrete things that will take you that direction
-            li Frequently - weekly works well
-
-      section
-        h2 Blame the build
-        h3 And fix it together
-        aside
-          ul
-            li Blame culture will kill this immediately though
-            li People will stop being honest in retros, and will start covering themselves instead of working together
-            li Don't allow that: focus on the team tools and processes
-            li If somebody makes a mistake, what allowed them to make a mistake
-            li Everybody on the team is trying to do their best; what's wrong with your system that leads them from that to mistakes?
-            li How could the build work better to stop these mistakes in future, and guide people right?
-
-      section
-        h2 Measure success
-        aside
-          ul
-            li Your retros should come up with actions
-            li Measure whether they happen
-            li Track the number of actions that happen by the next retro
-            li Keep visible chains since the last problem, for things you're trying to fix
-            li Days since last spurious build failure
-            li Graph stats: releases per day.
-
-      section
-        h2 Stay focused
-        aside
-          ul
-            li All of this is driving towards making retro actions actually happen
-            li Relatively easy to discuss things and not achieve anything
-            li Especially for actions everybody needs to do "remember to share your changes early"
-            li Reminders in chat rooms
-            li This, and retros generally, only work if you're only fixing a few things at a time
-            li Don't bite off too much at once.
-            li Again, one area at time.
-
-      section.conclusion.improving
-        h3.smell Not improving
-        h2 IMPROVING
-        h2 AS A TEAM
-        h2 OFTEN
-        h2 WITH FOCUS
-        aside
-          ul
-            li Not improving and changing to:
-            li Team responsibility
-            li Weekly retros and discussion of problems
-            li Focusing on the biggest problems one at a time
-
-
       section(data-bespoke-state="cumulative").cumulative
         h2 Improvements
         h3 are
@@ -794,11 +619,32 @@ html
             li It's easy to undervalue this stuff by only looking at the immediate single time improvement
             li The extra time you make in removing friction to keep people in their flow, to build a culture where broken things are obviously bad, and bring the team together around really good development are well worth it
 
+      section.how-to-improve
+        h2.work-together Work together
+        h2.focus Stay focused
+        h2.measure Measure + track
+        aside
+          ul
+            li Finally, how do you actually do all this. Three main things to power it
+          ul
+            li Get everybody on the team invested and directly involved.
+            li Retros and discussion are good here; can't just tell people what to fix
+          ul
+            li Focus on one thing at a time
+            li Fix one area totally, it's easier to motivate upkeep and appreciate value
+            li Fix everything slightly, nobody really cares
+          ul
+            li Measure what you want to change
+            li Releases per week, time taken to release, time since last spurious build failure
+            li Useful to tell what's working
+            li Also really useful for motivation for investment from people though
+            li That's the really hard bit
+
       section(data-bespoke-state="garden").gardening
         h2 
           strong Gardening
           br
-          | Not architecture
+          | not architecture
         aside
           ul
             li Finally, again, we're focusing on weeding and pruning here
@@ -817,9 +663,8 @@ html
         aside
           ul
             li That's the lot
+            li Again, I do work for Softwire, available for hire, recruiting in London/Bristol/Bucharest
             li I'm Tim Perry - pimterry on twitter - slides up later
-            li Again, I do work for Softwire, we do have an office right here in Bristol
-            li Come talk to me later if you'd like to come work for us, or if you'd like us to come work for you
             li Thank you
 
     script(src='build/build.js')
